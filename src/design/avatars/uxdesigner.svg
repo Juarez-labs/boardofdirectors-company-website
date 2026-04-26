@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="ux-title">
+  <title id="ux-title">UX Designer — Golden Ratio Spiral</title>
+
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Golden rectangle guides (subtle) -->
+  <rect x="38" y="38" width="124" height="124" fill="none" stroke="#10B981" stroke-width="0.75" stroke-opacity="0.12"/>
+  <rect x="38" y="38" width="76.5" height="124" fill="none" stroke="#10B981" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="38" y="38" width="76.5" height="76.5" fill="none" stroke="#10B981" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="85" y="38" width="77" height="47.5" fill="none" stroke="#10B981" stroke-width="0.5" stroke-opacity="0.1"/>
+
+  <!-- Golden spiral approximation (quarter circles) -->
+  <path d="M114.5,161.5 A76.5,76.5 0 0 1 38,85.5" fill="none" stroke="#10B981" stroke-width="2.5" stroke-opacity="0.9" stroke-linecap="round"/>
+  <path d="M38,85.5 A47.5,47.5 0 0 1 85.5,38" fill="none" stroke="#10B981" stroke-width="2.5" stroke-opacity="0.9" stroke-linecap="round"/>
+  <path d="M85.5,38 A29.3,29.3 0 0 1 114.5,67.5" fill="none" stroke="#10B981" stroke-width="2" stroke-opacity="0.8" stroke-linecap="round"/>
+  <path d="M114.5,67.5 A18.1,18.1 0 0 1 96.4,85.5" fill="none" stroke="#10B981" stroke-width="2" stroke-opacity="0.8" stroke-linecap="round"/>
+  <path d="M96.4,85.5 A11.2,11.2 0 0 1 114.5,96.7" fill="none" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.7" stroke-linecap="round"/>
+  <path d="M114.5,96.7 A6.9,6.9 0 0 1 107.5,103.6" fill="none" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
+  <path d="M107.5,103.6 A4.3,4.3 0 0 1 114.5,107.9" fill="none" stroke="#10B981" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Phi point (origin of spiral) -->
+  <circle cx="114.5" cy="105" r="4" fill="#10B981" opacity="0.9"/>
+  <circle cx="114.5" cy="105" r="2" fill="#0E0E16"/>
+
+  <!-- Corner radius markers -->
+  <circle cx="38" cy="38" r="2" fill="#10B981" opacity="0.3"/>
+  <circle cx="162" cy="38" r="2" fill="#10B981" opacity="0.3"/>
+  <circle cx="38" cy="162" r="2" fill="#10B981" opacity="0.3"/>
+  <circle cx="162" cy="162" r="2" fill="#10B981" opacity="0.3"/>
+</svg>

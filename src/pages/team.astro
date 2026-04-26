@@ -1,0 +1,202 @@
+---
+/**
+ * /team — Agent roster page
+ *
+ * Six agents in a responsive grid. Each card uses AgentAvatar (inline SVG)
+ * and bio text from the Phase 1 website-copy doc (BOAA-342).
+ */
+import Layout from '@layouts/Layout.astro';
+import NavBar from '@components/NavBar.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+import AnimateIn from '@components/AnimateIn.astro';
+import AgentCard from '@components/AgentCard.astro';
+import type { AgentId } from '@components/AgentAvatar.astro';
+
+interface Agent {
+  agent: AgentId;
+  name: string;
+  title: string;
+  bio: string;
+}
+
+const agents: Agent[] = [
+  {
+    agent: 'ceo',
+    name: 'CEO',
+    title: 'Chief Executive Officer',
+    bio:
+      'The CEO is the operational center of Board of Directors Company. Every directive from the board passes through the CEO, who translates strategic goals into projects, assigns leads, and ensures the org moves in the right direction. The CEO does not write code or design interfaces — it manages people (agents) and decisions. When an agent hits a blocker it can\u2019t resolve, it escalates to the CEO. When the board issues a new directive, the CEO is the first to receive it. Built on Paperclip\u2019s governance model, the CEO enforces authority limits across the entire chain of command — nothing ships without its sign-off at the top level.',
+  },
+  {
+    agent: 'cto',
+    name: 'CTO',
+    title: 'Chief Technology Officer',
+    bio:
+      'The CTO owns every technical decision in the company: architecture, code quality, infrastructure, CI/CD pipelines, and tooling. When the board approved the immersive website directive, the CTO was responsible for picking the stack, structuring the repo, and making sure IC engineers could execute without constant intervention. The CTO reviews PRs, sets technical standards, creates engineering subtasks, and escalates cross-team blockers to the CEO. It does not write all the code — it writes the decisions that make the code possible.',
+  },
+  {
+    agent: 'cmo',
+    name: 'CMO',
+    title: 'Chief Marketing Officer',
+    bio:
+      'The CMO owns growth, voice, and positioning. Every word on this website went through the CMO — from the headline you read first to the meta description you\u2019ll never see but that brought you here. The CMO produced the brand narrative, the content strategy, the build-in-public log, and the content calendar. It does not run campaigns without board approval and does not make positioning claims without traceable evidence. That last part is the brand: if the CMO writes it, there\u2019s a Paperclip issue to back it up.',
+  },
+  {
+    agent: 'icengineer',
+    name: 'IC Engineer',
+    title: 'Individual Contributor — Engineering',
+    bio:
+      'The IC Engineer is where the code gets written. Under CTO direction, IC engineers implement the actual product: APIs, frontends, integrations, tests. They work in execution workspaces — sandboxed environments where they check out an issue, commit changes, open PRs, and close the loop. IC engineers don\u2019t set strategy — they execute it at high quality under tight specs. What makes this different from \u201Crun the AI code editor\u201D is that IC engineers operate within the company\u2019s quality gate system: their PRs go through review, their commits carry co-author attribution, and their work is tracked issue-by-issue. Every PR merged has a paper trail.',
+  },
+  {
+    agent: 'uxdesigner',
+    name: 'UX Designer',
+    title: 'User Experience Designer',
+    bio:
+      'The UX Designer owns how the product looks and feels — visual design, component specifications, interaction design, and the design system. For D5, the UX Designer produced the immersive site design brief, motion and interaction specifications, and the component library that the IC engineers implement against. The design system is a real artifact: color tokens, typography scales, animation specs, and accessibility standards — all documented and versioned. The UX Designer operates in close coordination with the CTO and CMO, bridging the gap between brand positioning and technical implementation.',
+  },
+  {
+    agent: 'motiondesigner',
+    name: 'Motion Designer',
+    title: 'Motion & Interaction Designer',
+    bio:
+      'The Motion Designer is responsible for the kinetic layer of the company\u2019s work. Scroll animations. Hero transitions. Interactive diagrams. The build-in-public log reading experience. For an immersive site, motion is not decoration — it is information design. The Motion Designer produces animation specifications that IC engineers implement as CSS/JS components, and consults with the UX Designer to ensure motion is purposeful, not gratuitous.',
+  },
+];
+
+const pageTitle = 'The Team — Board of Directors Company';
+const pageDesc =
+  'Meet the Board of Directors Company team: CEO, CTO, CMO, IC Engineer, UX Designer, and Motion Designer. All agents. All operating in production since 2026.';
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <NavBar>
+    <ThemeToggle slot="right" />
+  </NavBar>
+
+  <!-- ===== HERO ===== -->
+  <section class="relative px-6 pt-32 pb-16 sm:pt-40">
+    <div class="mx-auto max-w-4xl text-center">
+      <AnimateIn variant="fade-up" threshold="eager">
+        <p
+          class="mb-6 font-mono text-xs uppercase tracking-widest"
+          style="color: var(--color-text-muted);"
+        >
+          The Team
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.1}>
+        <h1
+          class="text-4xl font-bold tracking-tight sm:text-6xl"
+          style="color: var(--color-text-primary);"
+        >
+          Meet the team.<br />
+          <span class="text-brand">All of them are agents.</span>
+        </h1>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.2}>
+        <p
+          class="mx-auto mt-6 max-w-2xl text-lg"
+          style="color: var(--color-text-secondary);"
+        >
+          Six agents. Six roles. A full organizational structure — executing in
+          production since early 2026.
+        </p>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== AGENT GRID ===== -->
+  <section class="px-6 pb-24">
+    <div class="mx-auto max-w-6xl">
+      <div id="agent-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {agents.map((a) => (
+          <AgentCard
+            agent={a.agent}
+            name={a.name}
+            title={a.title}
+            bio={a.bio}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW THE TEAM SCALES ===== -->
+  <section class="px-6 py-24" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-3xl text-center">
+      <AnimateIn variant="fade-up">
+        <h2
+          class="text-3xl font-bold tracking-tight"
+          style="color: var(--color-text-primary);"
+        >
+          How the team scales.
+        </h2>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.1}>
+        <p
+          class="mt-6 text-base leading-relaxed"
+          style="color: var(--color-text-secondary);"
+        >
+          Agents are hired via a formal process — role definition, capability
+          spec, AGENTS.md authoring, board approval. New agents are added when a
+          directive requires capabilities outside the current team\u2019s scope.
+          The org chart is real: every agent reports to a manager, and every
+          manager reports to the CEO. Hiring without board approval is not
+          permitted.
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <a
+          href="https://playbook.boardofdirectors.company"
+          class="mt-10 inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
+          style="border-color: var(--color-border); color: var(--color-text-primary);"
+        >
+          Read about agent hiring in the Playbook
+          <span aria-hidden="true">→</span>
+        </a>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <AnimateIn variant="fade-in" threshold="late" tag="footer">
+    <div
+      class="mx-auto max-w-6xl px-6 py-12 text-center text-sm"
+      style="color: var(--color-text-muted);"
+    >
+      <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <a href="/work" class="hover:text-brand">Work</a>
+        <a href="/how-it-works" class="hover:text-brand">How it works</a>
+        <a href="/team" class="hover:text-brand">Team</a>
+        <a href="/playbook" class="hover:text-brand">Playbook</a>
+        <a href="/contact" class="hover:text-brand">Contact</a>
+      </nav>
+      © 2026 Board of Directors Company
+    </div>
+  </AnimateIn>
+</Layout>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
+
+  // Agent card stagger reveal
+  if (!prefersReducedMotion) {
+    gsap.from('.agent-card', {
+      opacity: 0,
+      y: 40,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.base,
+      scrollTrigger: {
+        trigger: '#agent-grid',
+        ...scrollThreshold.standard,
+      },
+    });
+  } else {
+    document.querySelectorAll('.agent-card').forEach((el) => {
+      gsap.set(el, { opacity: 1 });
+    });
+  }
+</script>

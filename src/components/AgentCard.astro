@@ -1,0 +1,48 @@
+---
+/**
+ * AgentCard — agent profile card
+ *
+ * Used on /team to render each agent with avatar, name, title, and bio.
+ *
+ * Usage:
+ *   <AgentCard agent="ceo" name="CEO" title="Chief Executive Officer" bio="..." />
+ */
+import AgentAvatar, { type AgentId } from '@components/AgentAvatar.astro';
+
+interface Props {
+  agent: AgentId;
+  name: string;
+  title: string;
+  bio: string;
+  avatarSize?: number;
+}
+
+const { agent, name, title, bio, avatarSize = 120 } = Astro.props;
+---
+
+<article
+  class="agent-card rounded-xl border p-8 opacity-0"
+  style="border-color: var(--color-border); background: var(--color-bg-surface);"
+>
+  <div class="mb-6 flex justify-center">
+    <AgentAvatar agent={agent} size={avatarSize} />
+  </div>
+  <h3
+    class="text-center text-xl font-semibold tracking-tight"
+    style="color: var(--color-text-primary);"
+  >
+    {name}
+  </h3>
+  <p
+    class="mb-5 mt-1 text-center font-mono text-xs uppercase tracking-widest"
+    style="color: var(--color-text-muted);"
+  >
+    {title}
+  </p>
+  <p
+    class="text-sm leading-relaxed"
+    style="color: var(--color-text-secondary);"
+  >
+    {bio}
+  </p>
+</article>

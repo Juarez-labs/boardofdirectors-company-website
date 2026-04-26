@@ -1,0 +1,61 @@
+---
+/**
+ * AgentAvatar — inline SVG agent avatar
+ *
+ * Loads the avatar SVG from `src/design/avatars/{agent}.svg` at build time
+ * (via Vite import.meta.glob, raw import) and inlines the markup. Inlining
+ * keeps SVGs styleable and avoids extra HTTP requests.
+ *
+ * Usage:
+ *   <AgentAvatar agent="ceo" />
+ *   <AgentAvatar agent="cto" size={120} />
+ */
+
+export type AgentId = 'ceo' | 'cto' | 'cmo' | 'uxdesigner' | 'motiondesigner' | 'icengineer';
+
+interface Props {
+  agent: AgentId;
+  size?: number;
+  class?: string;
+}
+
+const { agent, size = 200, class: className } = Astro.props;
+
+// Eager raw import of all avatar SVGs at build time.
+const avatarFiles = import.meta.glob<string>(
+  '/src/design/avatars/*.svg',
+  { eager: true, query: '?raw', import: 'default' },
+);
+
+const svgPath = `/src/design/avatars/${agent}.svg`;
+const svgMarkup = avatarFiles[svgPath];
+
+if (!svgMarkup) {
+  throw new Error(
+    `[AgentAvatar] No SVG found for agent="${agent}" at ${svgPath}. ` +
+      `Available: ${Object.keys(avatarFiles).join(', ')}`,
+  );
+}
+---
+
+<div
+  class:list={['agent-avatar', `agent-avatar--${agent}`, className]}
+  style={`--avatar-size: ${size}px;`}
+  set:html={svgMarkup}
+/>
+
+<style>
+  .agent-avatar {
+    display: inline-block;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .agent-avatar :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>

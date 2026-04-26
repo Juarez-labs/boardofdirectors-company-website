@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="ceo-title">
+  <title id="ceo-title">CEO — Radial Crown</title>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#F59E0B" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Outer radial ring (subtle) -->
+  <circle cx="100" cy="100" r="72" fill="none" stroke="#F59E0B" stroke-width="0.75" stroke-opacity="0.15"/>
+
+  <!-- 8-point star / crown geometry -->
+  <polygon points="100,18 109,76 152,44 118,84 162,100 118,116 152,156 109,124 100,182 91,124 48,156 82,116 38,100 82,84 48,44 91,76"
+           fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-opacity="0.7" stroke-linejoin="round"/>
+
+  <!-- Inner crown (4-point highlight) -->
+  <polygon points="100,54 112,88 146,100 112,112 100,146 88,112 54,100 88,88"
+           fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Center jewel -->
+  <circle cx="100" cy="100" r="12" fill="#F59E0B" opacity="0.9"/>
+  <circle cx="100" cy="100" r="7" fill="#0E0E16"/>
+  <circle cx="100" cy="100" r="3.5" fill="#F59E0B"/>
+
+  <!-- Radial spokes -->
+  <line x1="100" y1="88" x2="100" y2="54" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="100" y1="112" x2="100" y2="146" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="88" y1="100" x2="54" y2="100" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="112" y1="100" x2="146" y2="100" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.4"/>
+</svg>

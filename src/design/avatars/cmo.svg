@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="cmo-title">
+  <title id="cmo-title">CMO — Wave Flow</title>
+
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Wave layers — flowing sine curves -->
+  <path d="M28,80 C52,60 76,100 100,80 C124,60 148,100 172,80"
+        fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.25" stroke-linecap="round"/>
+  <path d="M28,92 C52,72 76,112 100,92 C124,72 148,112 172,92"
+        fill="none" stroke="#EC4899" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+  <path d="M28,104 C52,84 76,124 100,104 C124,84 148,124 172,104"
+        fill="none" stroke="#EC4899" stroke-width="2.5" stroke-opacity="0.8" stroke-linecap="round"/>
+  <path d="M28,116 C52,96 76,136 100,116 C124,96 148,136 172,116"
+        fill="none" stroke="#EC4899" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+  <path d="M28,128 C52,108 76,148 100,128 C124,108 148,148 172,128"
+        fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.25" stroke-linecap="round"/>
+
+  <!-- Radiate dots along primary wave -->
+  <circle cx="52" cy="86" r="3" fill="#EC4899" opacity="0.7"/>
+  <circle cx="100" cy="104" r="4" fill="#EC4899" opacity="0.9"/>
+  <circle cx="148" cy="86" r="3" fill="#EC4899" opacity="0.7"/>
+
+  <!-- Center glow dot -->
+  <circle cx="100" cy="104" r="8" fill="#EC4899" opacity="0.15"/>
+  <circle cx="100" cy="104" r="4" fill="#EC4899"/>
+
+  <!-- Subtle broadcast arcs -->
+  <path d="M68,64 Q100,40 132,64" fill="none" stroke="#EC4899" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+  <path d="M56,52 Q100,22 144,52" fill="none" stroke="#EC4899" stroke-width="0.75" stroke-opacity="0.1" stroke-linecap="round"/>
+</svg>
