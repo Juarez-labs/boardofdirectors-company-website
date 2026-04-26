@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/bundlewatch",
+  "comment": "D5 Performance Budget — exceeding these limits requires board review",
+  "files": [
+    {
+      "path": "./dist/_astro/*.js",
+      "maxSize": "150 kB",
+      "compression": "gzip",
+      "comment": "Total JS initial load — must stay ≤150 KB gzip (board-approved budget)"
+    },
+    {
+      "path": "./dist/_astro/*.css",
+      "maxSize": "25 kB",
+      "compression": "gzip",
+      "comment": "Total CSS — Tailwind v4 purges unused classes, should be tiny"
+    }
+  ],
+  "targets": {
+    "lcp": "≤2.0s",
+    "inp": "≤150ms",
+    "cls": "<0.05",
+    "fcp": "≤1.8s"
+  }
+}

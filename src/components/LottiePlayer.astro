@@ -1,0 +1,90 @@
+---
+/**
+ * LottiePlayer — Lottie Animation Stub
+ *
+ * Wraps lottie-web to render a Lottie JSON animation.
+ * This is a Phase 0 integration stub — full animations will be
+ * provided by MotionDesigner in Phase 2.
+ *
+ * Usage:
+ *   <LottiePlayer src="/animations/logo.json" loop autoplay />
+ */
+
+interface Props {
+  /** Path to .json or .lottie animation file */
+  src: string;
+  /** Loop the animation (default: false) */
+  loop?: boolean;
+  /** Autoplay on load (default: false) */
+  autoplay?: boolean;
+  /** Playback speed multiplier (default: 1) */
+  speed?: number;
+  /** ARIA label for accessibility */
+  label?: string;
+  /** CSS class forwarded to container */
+  class?: string;
+}
+
+const {
+  src,
+  loop = false,
+  autoplay = false,
+  speed = 1,
+  label = 'Animation',
+  class: className = '',
+} = Astro.props;
+
+const containerId = `lottie-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div
+  id={containerId}
+  class={`lottie-container ${className}`}
+  aria-label={label}
+  role="img"
+  data-src={src}
+  data-loop={String(loop)}
+  data-autoplay={String(autoplay)}
+  data-speed={String(speed)}
+></div>
+
+<script>
+  import lottie from 'lottie-web';
+
+  document.querySelectorAll<HTMLElement>('.lottie-container').forEach((container) => {
+    const src = container.dataset['src'];
+    const loop = container.dataset['loop'] === 'true';
+    const autoplay = container.dataset['autoplay'] === 'true';
+    const speed = parseFloat(container.dataset['speed'] ?? '1');
+
+    if (!src) return;
+
+    const anim = lottie.loadAnimation({
+      container,
+      renderer: 'svg',
+      loop,
+      autoplay,
+      path: src,
+    });
+
+    if (speed !== 1) {
+      anim.setSpeed(speed);
+    }
+
+    // Pause when off-screen (performance)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            anim.play();
+          } else {
+            anim.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+  });
+</script>

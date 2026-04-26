@@ -1,0 +1,26 @@
+{
+  "name": "boac-website",
+  "description": "Board of Directors Company — Immersive Company Website (D5)",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lhci": "lhci autorun"
+  },
+  "dependencies": {
+    "astro": "^5.7.1",
+    "gsap": "^3.12.7",
+    "lottie-web": "^5.12.2",
+    "tailwindcss": "^4.1.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "@lhci/cli": "^0.14.0",
+    "typescript": "^5.8.3"
+  }
+}

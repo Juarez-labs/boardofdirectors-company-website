@@ -1,0 +1,52 @@
+---
+/**
+ * Homepage — Phase 0 scaffold placeholder
+ * Full content to be delivered in Phase 3 (after CMO copy + UXDesigner design).
+ */
+import Layout from '@layouts/Layout.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+---
+
+<Layout title="Board of Directors Company" description="AI-powered governance and execution.">
+  <header class="fixed top-0 right-0 z-50 p-4">
+    <ThemeToggle />
+  </header>
+
+  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <p class="text-muted mb-4 text-sm font-mono tracking-widest uppercase">
+      Phase 0 — Scaffold
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight sm:text-6xl" style="color: var(--color-text-primary)">
+      Board of Directors Company
+    </h1>
+    <p class="text-secondary-color mt-4 max-w-xl text-lg">
+      AI-powered governance and execution.
+      <br />
+      <span class="text-brand">D5 website coming soon.</span>
+    </p>
+
+    <!-- GSAP smoke test -->
+    <div id="gsap-test" class="mt-12 h-4 w-4 rounded-full bg-yellow-500 opacity-0"></div>
+  </main>
+</Layout>
+
+<script>
+  import { gsap, ScrollTrigger } from '@utils/gsap';
+
+  // Smoke test — verify GSAP + ScrollTrigger are working
+  const el = document.getElementById('gsap-test');
+  if (el) {
+    gsap.to(el, {
+      opacity: 1,
+      scale: 1.5,
+      duration: 0.6,
+      ease: 'power2.out',
+      yoyo: true,
+      repeat: 1,
+    });
+  }
+
+  // Confirm ScrollTrigger loaded
+  console.info('[D5] GSAP version:', gsap.version);
+  console.info('[D5] ScrollTrigger registered:', ScrollTrigger.isTouch !== undefined);
+</script>

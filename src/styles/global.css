@@ -1,0 +1,95 @@
+/* D5 Design System — Global Styles */
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — D5 Color System
+   ============================================================ */
+@layer base {
+  :root {
+    /* Brand colors */
+    --color-brand-primary: #eab308;      /* yellow-500 — company accent */
+    --color-brand-secondary: #a855f7;    /* purple-500 */
+
+    /* Light mode surface tokens */
+    --color-bg-base: #ffffff;
+    --color-bg-surface: #f8f8f8;
+    --color-bg-elevated: #f0f0f0;
+    --color-text-primary: #111111;
+    --color-text-secondary: #555555;
+    --color-text-muted: #999999;
+    --color-border: #e5e5e5;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Motion tokens (placeholder — MotionDesigner to refine in Phase 2) */
+    --motion-duration-fast: 150ms;
+    --motion-duration-base: 300ms;
+    --motion-duration-slow: 600ms;
+    --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --motion-stagger-base: 80ms;
+  }
+
+  [data-theme="dark"] {
+    /* Dark mode surface tokens */
+    --color-bg-base: #0a0a0a;
+    --color-bg-surface: #111111;
+    --color-bg-elevated: #1a1a1a;
+    --color-text-primary: #f5f5f5;
+    --color-text-secondary: #aaaaaa;
+    --color-text-muted: #666666;
+    --color-border: #2a2a2a;
+  }
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Bloom transition for theme switch */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-new(root) {
+    z-index: 1;
+  }
+
+  ::view-transition-old(root) {
+    z-index: 9999;
+  }
+}
+
+/* ============================================================
+   TAILWIND UTILITIES — Custom D5 Extensions
+   ============================================================ */
+@layer utilities {
+  .text-brand { color: var(--color-brand-primary); }
+  .bg-surface { background-color: var(--color-bg-surface); }
+  .bg-elevated { background-color: var(--color-bg-elevated); }
+  .border-subtle { border-color: var(--color-border); }
+  .text-muted { color: var(--color-text-muted); }
+  .text-secondary-color { color: var(--color-text-secondary); }
+}
