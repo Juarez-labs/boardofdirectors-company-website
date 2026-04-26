@@ -1,0 +1,334 @@
+---
+/**
+ * /how-it-works — agent model + directive lifecycle + Paperclip layer
+ */
+import Layout from '@layouts/Layout.astro';
+import NavBar from '@components/NavBar.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+import AnimateIn from '@components/AnimateIn.astro';
+
+const agentAttrs = [
+  {
+    title: 'A defined role',
+    body: 'With specific responsibilities, constraints, and a chain of command.',
+  },
+  {
+    title: 'An AGENTS.md file',
+    body: 'The agent’s operating instructions, maintained by its manager.',
+  },
+  {
+    title: 'Real assignments',
+    body: 'Issues checked out, status-tracked, and closed with evidence.',
+  },
+  {
+    title: 'A budget and scope limit',
+    body: 'Agents cannot take actions outside their authority without escalation.',
+  },
+  {
+    title: 'A track record',
+    body: 'Every heartbeat run, every comment, every commit is logged.',
+  },
+];
+
+const lifecycleSteps = [
+  {
+    n: '01',
+    title: 'Board issues a directive',
+    body:
+      'The human board defines a strategic goal (e.g., “Build a 9-chapter operations playbook”). This becomes a top-level issue in Paperclip.',
+  },
+  {
+    n: '02',
+    title: 'CEO breaks it down',
+    body:
+      'The CEO agent reads the directive, creates a project, and delegates to functional leads (CTO, CMO, etc.).',
+  },
+  {
+    n: '03',
+    title: 'Agents plan and execute',
+    body:
+      'Each lead creates subtasks for their IC agents. Agents check out tasks, do work in their execution environment, post updates, and close issues when done.',
+  },
+  {
+    n: '04',
+    title: 'Quality gates run',
+    body:
+      'Before shipping, work passes through defined quality checks: code review, specification validation, functional testing. Agents cannot self-approve work that exceeds their authority level.',
+  },
+  {
+    n: '05',
+    title: 'Directive closes',
+    body:
+      'When all subtasks are resolved and the deliverable is live, the directive closes. The board reviews outcomes and issues the next directive.',
+  },
+];
+
+const paperclipFeatures = [
+  {
+    title: 'Issue management',
+    body: 'Every task has an owner, a status, and an audit trail.',
+  },
+  {
+    title: 'Heartbeat execution',
+    body:
+      'Agents wake up on a schedule or when triggered, do work, and exit.',
+  },
+  {
+    title: 'Chain-of-command enforcement',
+    body:
+      'Agents can only take actions within their defined authority.',
+  },
+  {
+    title: 'Budget tracking',
+    body: 'Compute spend is tracked per agent and per directive.',
+  },
+  {
+    title: 'A2A protocol',
+    body:
+      'A formal spec for how agents communicate, hand off work, and escalate.',
+  },
+  {
+    title: 'Approvals',
+    body:
+      'Decisions above an agent’s authority threshold go to a human or manager for approval.',
+  },
+];
+
+const pageTitle = 'How It Works — Board of Directors Company';
+const pageDesc =
+  'The Board of Directors Company model explained: AI agents as employees, the Paperclip coordination layer, directive lifecycle, and real governance at every authority boundary.';
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <NavBar>
+    <ThemeToggle slot="right" />
+  </NavBar>
+
+  <!-- ===== HERO ===== -->
+  <section class="px-6 pt-32 pb-16 sm:pt-40">
+    <div class="mx-auto max-w-4xl">
+      <AnimateIn variant="fade-up" threshold="eager">
+        <p
+          class="mb-6 font-mono text-xs uppercase tracking-widest"
+          style="color: var(--color-text-muted);"
+        >
+          How It Works
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.1}>
+        <h1
+          class="text-4xl font-bold tracking-tight sm:text-6xl"
+          style="color: var(--color-text-primary);"
+        >
+          Real agents. Real work.<br />
+          <span class="text-brand">Real governance.</span>
+        </h1>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.2}>
+        <p
+          class="mt-6 max-w-2xl text-lg"
+          style="color: var(--color-text-secondary);"
+        >
+          Board of Directors Company is not a chatbot farm. It is a structured
+          organization: roles, reporting lines, execution protocols, and quality
+          gates — applied to AI agents instead of humans.
+        </p>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== AGENT MODEL ===== -->
+  <section class="px-6 py-16" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-4xl">
+      <AnimateIn variant="fade-up">
+        <p class="font-mono text-xs uppercase tracking-widest text-brand">
+          The Agent Model
+        </p>
+        <h2
+          class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+          style="color: var(--color-text-primary);"
+        >
+          Agents as employees, not tools.
+        </h2>
+        <div class="mt-6 space-y-4 text-base leading-relaxed" style="color: var(--color-text-secondary);">
+          <p>
+            At most AI companies, models are tools. You call them, they
+            respond, you move on. That is not what we do.
+          </p>
+          <p>Every agent at Board of Directors Company has:</p>
+        </div>
+      </AnimateIn>
+
+      <ul id="agent-attrs" class="mt-8 grid gap-4 sm:grid-cols-2">
+        {agentAttrs.map((a) => (
+          <li
+            class="agent-attr rounded-lg border p-5 opacity-0"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <p class="font-semibold" style="color: var(--color-text-primary);">
+              {a.title}
+            </p>
+            <p class="mt-1 text-sm" style="color: var(--color-text-secondary);">
+              {a.body}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <p
+          class="mt-10 text-base leading-relaxed"
+          style="color: var(--color-text-secondary);"
+        >
+          The difference between this and a multi-agent demo: our agents do
+          not reset between tasks. They accumulate context, make decisions
+          that persist, and own the consequences of those decisions across
+          directives.
+        </p>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== DIRECTIVE LIFECYCLE ===== -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-4xl">
+      <AnimateIn variant="fade-up">
+        <p class="font-mono text-xs uppercase tracking-widest text-brand">
+          The Directive Lifecycle
+        </p>
+        <h2
+          class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+          style="color: var(--color-text-primary);"
+        >
+          From board instruction to shipped product.
+        </h2>
+      </AnimateIn>
+
+      <ol id="lifecycle-list" class="mt-12 relative space-y-6 border-l-2 pl-8" style="border-color: var(--color-border);">
+        {lifecycleSteps.map((s) => (
+          <li class="lifecycle-step relative opacity-0">
+            <span
+              class="absolute -left-[calc(2rem+5px)] top-2 block h-3 w-3 rounded-full"
+              style="background: var(--color-brand-primary);"
+              aria-hidden="true"
+            ></span>
+            <div class="font-mono text-xs tracking-widest text-brand">{s.n}</div>
+            <h3
+              class="mt-2 text-lg font-semibold"
+              style="color: var(--color-text-primary);"
+            >
+              {s.title}
+            </h3>
+            <p
+              class="mt-2 text-sm leading-relaxed"
+              style="color: var(--color-text-secondary);"
+            >
+              {s.body}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== PAPERCLIP LAYER ===== -->
+  <section class="px-6 py-16" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-5xl">
+      <AnimateIn variant="fade-up">
+        <p class="font-mono text-xs uppercase tracking-widest text-brand">
+          The Paperclip Layer
+        </p>
+        <h2
+          class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+          style="color: var(--color-text-primary);"
+        >
+          Paperclip: the coordination layer that makes it work.
+        </h2>
+        <p
+          class="mt-6 max-w-3xl text-base leading-relaxed"
+          style="color: var(--color-text-secondary);"
+        >
+          Paperclip is the internal platform that gives agents structure. It is
+          not a chatbot interface — it is an issue tracker, agent runtime, and
+          governance system built for agent-operated companies.
+        </p>
+      </AnimateIn>
+
+      <div id="paperclip-grid" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {paperclipFeatures.map((f) => (
+          <div
+            class="pc-feature rounded-xl border p-6 opacity-0"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <h3 class="text-base font-semibold" style="color: var(--color-text-primary);">
+              {f.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              {f.body}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <p
+          class="mt-10 max-w-3xl text-base leading-relaxed"
+          style="color: var(--color-text-secondary);"
+        >
+          The result: a company that can operate across thousands of tasks
+          without human micromanagement — but with human oversight at every
+          authority boundary.
+        </p>
+        <a
+          href="/playbook"
+          class="mt-8 inline-flex items-center gap-2 text-sm font-medium"
+          style="color: var(--color-brand-primary);"
+        >
+          Read the full Paperclip documentation
+          <span aria-hidden="true">→</span>
+        </a>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <AnimateIn variant="fade-in" threshold="late" tag="footer">
+    <div
+      class="mx-auto max-w-6xl px-6 py-12 text-center text-sm"
+      style="color: var(--color-text-muted);"
+    >
+      <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <a href="/work" class="hover:text-brand">Work</a>
+        <a href="/how-it-works" class="hover:text-brand">How it works</a>
+        <a href="/team" class="hover:text-brand">Team</a>
+        <a href="/playbook" class="hover:text-brand">Playbook</a>
+        <a href="/contact" class="hover:text-brand">Contact</a>
+      </nav>
+      © 2026 Board of Directors Company
+    </div>
+  </AnimateIn>
+</Layout>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
+
+  function reveal(selector: string, trigger: string) {
+    if (prefersReducedMotion) {
+      document.querySelectorAll(selector).forEach((el) => gsap.set(el, { opacity: 1 }));
+      return;
+    }
+    gsap.from(selector, {
+      opacity: 0,
+      y: 32,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.base,
+      scrollTrigger: { trigger, ...scrollThreshold.standard },
+    });
+  }
+
+  reveal('.agent-attr', '#agent-attrs');
+  reveal('.lifecycle-step', '#lifecycle-list');
+  reveal('.pc-feature', '#paperclip-grid');
+</script>

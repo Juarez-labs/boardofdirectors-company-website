@@ -1,0 +1,349 @@
+---
+/**
+ * /work — Playbook case study page
+ *
+ * Single case study: the AI Agent Company Playbook (D4).
+ */
+import Layout from '@layouts/Layout.astro';
+import NavBar from '@components/NavBar.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+import AnimateIn from '@components/AnimateIn.astro';
+
+const chapters = [
+  {
+    n: '01',
+    title: 'Hiring Agents',
+    body:
+      'How we define roles, write AGENTS.md files, and onboard new agents into the chain of command.',
+  },
+  {
+    n: '02',
+    title: 'The Directive Lifecycle',
+    body:
+      'From board directive to shipped deliverable: the full execution model.',
+  },
+  {
+    n: '03',
+    title: 'Quality Gates',
+    body:
+      'How we ensure agents don’t ship broken work without human micromanagement.',
+  },
+  {
+    n: '04',
+    title: 'Agent-to-Agent Coordination',
+    body:
+      'The A2A protocol: how agents hand off work, escalate blockers, and operate across teams.',
+  },
+  {
+    n: '05',
+    title: 'Building in Public',
+    body:
+      'Why we publish the log, what goes in it, and how we handle failure reports.',
+  },
+];
+
+const pageTitle = 'Our Work — Board of Directors Company';
+const pageDesc =
+  'Case studies from Board of Directors Company: how we built a 9-chapter AI agent operations playbook using only AI agents, and what we shipped along the way.';
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <NavBar>
+    <ThemeToggle slot="right" />
+  </NavBar>
+
+  <!-- ===== HERO ===== -->
+  <section class="px-6 pt-32 pb-16 sm:pt-40">
+    <div class="mx-auto max-w-4xl">
+      <AnimateIn variant="fade-up" threshold="eager">
+        <p
+          class="mb-6 font-mono text-xs uppercase tracking-widest"
+          style="color: var(--color-text-muted);"
+        >
+          Case Study · Directive D4
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.1}>
+        <h1
+          class="text-4xl font-bold tracking-tight sm:text-6xl"
+          style="color: var(--color-text-primary);"
+        >
+          We built the manual by<br />
+          <span class="text-brand">running the operation.</span>
+        </h1>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.2}>
+        <p
+          class="mt-6 max-w-2xl text-lg"
+          style="color: var(--color-text-secondary);"
+        >
+          The AI Agent Company Playbook is a 9-chapter operations guide for
+          building software with AI agents. We wrote it while doing exactly
+          that.
+        </p>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== THE PROBLEM ===== -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-3xl">
+      <AnimateIn variant="fade-up">
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-brand"
+        >
+          The Problem
+        </p>
+        <h2
+          class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
+          style="color: var(--color-text-primary);"
+        >
+          No one had written down how to do this.
+        </h2>
+        <div class="mt-6 space-y-4 text-base leading-relaxed" style="color: var(--color-text-secondary);">
+          <p>
+            In early 2026, no operational playbook existed for running a real
+            software company with AI agents. Academic papers described the
+            concept. Demo repositories showed toy examples. But no organization
+            had published a step-by-step record of what actually works — the
+            governance structures, the quality gates, the handoff protocols, the
+            failure modes.
+          </p>
+          <p>
+            Board of Directors Company was designed from day one to produce that
+            record. Not by writing a book first, then attempting to apply it —
+            but by running the operation first, and publishing the playbook as
+            each practice was validated.
+          </p>
+        </div>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== THE APPROACH ===== -->
+  <section class="px-6 py-16" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-3xl">
+      <AnimateIn variant="fade-up">
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-brand"
+        >
+          The Approach
+        </p>
+        <h2
+          class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
+          style="color: var(--color-text-primary);"
+        >
+          Run the operation. Document each practice as it stabilizes.
+        </h2>
+        <div class="mt-6 space-y-4 text-base leading-relaxed" style="color: var(--color-text-secondary);">
+          <p>
+            We structured the work as a series of <strong>directives</strong> —
+            high-level tasks issued by the human board and executed by the
+            agent organization. Each directive produced real artifacts: code,
+            documentation, APIs, decisions.
+          </p>
+          <p>
+            The playbook itself became Directive 4 (D4). The writing agents —
+            operating under CMO direction — drew on the full issue thread
+            history, agent heartbeat logs, incident reports, and retrospectives
+            from D1 through D3 to produce a chapter-by-chapter account that
+            practitioners could actually use.
+          </p>
+        </div>
+
+        <ul class="mt-8 space-y-4">
+          <li
+            class="rounded-lg border p-5"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <p class="font-semibold" style="color: var(--color-text-primary);">
+              No ghost-writing rule.
+            </p>
+            <p class="mt-1 text-sm" style="color: var(--color-text-secondary);">
+              Every claim in the playbook was validated against a real issue,
+              commit, or approved artifact. No chapter was published without
+              traceable evidence.
+            </p>
+          </li>
+          <li
+            class="rounded-lg border p-5"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <p class="font-semibold" style="color: var(--color-text-primary);">
+              Failure is content.
+            </p>
+            <p class="mt-1 text-sm" style="color: var(--color-text-secondary);">
+              Chapters include what didn’t work, what we rearchitected, and
+              where the agent model hit its limits.
+            </p>
+          </li>
+          <li
+            class="rounded-lg border p-5"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <p class="font-semibold" style="color: var(--color-text-primary);">
+              Living document model.
+            </p>
+            <p class="mt-1 text-sm" style="color: var(--color-text-secondary);">
+              The playbook was published chapter-by-chapter as directives
+              completed — not held for a final release.
+            </p>
+          </li>
+        </ul>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== THE RESULT ===== -->
+  <section class="px-6 py-16">
+    <div class="mx-auto max-w-3xl">
+      <AnimateIn variant="fade-up">
+        <p class="font-mono text-xs uppercase tracking-widest text-brand">
+          The Result
+        </p>
+        <h2
+          class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl"
+          style="color: var(--color-text-primary);"
+        >
+          Nine chapters. 300+ source issues. Used internally on day one.
+        </h2>
+
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+          <li class="rounded-lg border p-5" style="border-color: var(--color-border);">
+            <div class="text-3xl font-bold text-brand">9 chapters</div>
+            <div class="mt-1 text-sm" style="color: var(--color-text-muted);">Published live, hiring through governance</div>
+          </li>
+          <li class="rounded-lg border p-5" style="border-color: var(--color-border);">
+            <div class="text-3xl font-bold text-brand">300+ issues</div>
+            <div class="mt-1 text-sm" style="color: var(--color-text-muted);">Traceable source material, D1–D4</div>
+          </li>
+          <li class="rounded-lg border p-5" style="border-color: var(--color-border);">
+            <div class="text-3xl font-bold text-brand">Docusaurus</div>
+            <div class="mt-1 text-sm" style="color: var(--color-text-muted);">Custom design system, public site</div>
+          </li>
+          <li class="rounded-lg border p-5" style="border-color: var(--color-border);">
+            <div class="text-3xl font-bold text-brand">Used on D5</div>
+            <div class="mt-1 text-sm" style="color: var(--color-text-muted);">This website was built using it</div>
+          </li>
+        </ul>
+
+        <blockquote
+          class="mt-12 border-l-4 pl-6"
+          style="border-color: var(--color-brand-primary);"
+        >
+          <p class="text-xl italic leading-relaxed" style="color: var(--color-text-primary);">
+            “The playbook is not aspirational. It describes decisions we
+            actually made, in the order we made them, with the evidence
+            attached.”
+          </p>
+          <footer
+            class="mt-4 font-mono text-xs uppercase tracking-widest"
+            style="color: var(--color-text-muted);"
+          >
+            — CMO, Board of Directors Company
+          </footer>
+        </blockquote>
+
+        <div class="mt-12 space-y-4 text-base leading-relaxed" style="color: var(--color-text-secondary);">
+          <p
+            class="font-semibold"
+            style="color: var(--color-text-primary);"
+          >
+            What we learned
+          </p>
+          <p>
+            The hardest part was not technical — it was epistemic. Writing a
+            playbook about AI agent operations while the operations are still
+            running requires constant discipline to distinguish “what we did”
+            from “what we think would work.” We defaulted to the former. That
+            is what makes it useful.
+          </p>
+        </div>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== KEY CHAPTERS ===== -->
+  <section class="px-6 py-24" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-5xl">
+      <AnimateIn variant="fade-up">
+        <h2
+          class="text-center text-3xl font-bold tracking-tight sm:text-4xl"
+          style="color: var(--color-text-primary);"
+        >
+          Key chapters.
+        </h2>
+      </AnimateIn>
+
+      <div id="chapter-grid" class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {chapters.map((c) => (
+          <article
+            class="chapter-card rounded-xl border p-6 opacity-0"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <div class="font-mono text-xs tracking-widest text-brand">{c.n}</div>
+            <h3 class="mt-3 text-lg font-semibold" style="color: var(--color-text-primary);">
+              {c.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              {c.body}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <div class="mt-16 text-center">
+          <a
+            href="/playbook"
+            class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
+            style="background: var(--color-brand-primary); color: #111;"
+          >
+            Read all 9 chapters
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <AnimateIn variant="fade-in" threshold="late" tag="footer">
+    <div
+      class="mx-auto max-w-6xl px-6 py-12 text-center text-sm"
+      style="color: var(--color-text-muted);"
+    >
+      <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <a href="/work" class="hover:text-brand">Work</a>
+        <a href="/how-it-works" class="hover:text-brand">How it works</a>
+        <a href="/team" class="hover:text-brand">Team</a>
+        <a href="/playbook" class="hover:text-brand">Playbook</a>
+        <a href="/contact" class="hover:text-brand">Contact</a>
+      </nav>
+      © 2026 Board of Directors Company
+    </div>
+  </AnimateIn>
+</Layout>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
+
+  if (!prefersReducedMotion) {
+    gsap.from('.chapter-card', {
+      opacity: 0,
+      y: 40,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.base,
+      scrollTrigger: {
+        trigger: '#chapter-grid',
+        ...scrollThreshold.standard,
+      },
+    });
+  } else {
+    document.querySelectorAll('.chapter-card').forEach((el) => {
+      gsap.set(el, { opacity: 1 });
+    });
+  }
+</script>

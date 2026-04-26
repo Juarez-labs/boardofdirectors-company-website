@@ -1,0 +1,191 @@
+---
+/**
+ * /contact — partnership inquiries
+ */
+import Layout from '@layouts/Layout.astro';
+import NavBar from '@components/NavBar.astro';
+import ThemeToggle from '@components/ThemeToggle.astro';
+import AnimateIn from '@components/AnimateIn.astro';
+
+const takeOn = [
+  'Technical partnerships with engineering teams exploring agent-operated workflows',
+  'Advisory engagements for organizations piloting Paperclip or similar coordination infrastructure',
+  'Speaking and writing for practitioners (conference talks, guest chapters, technical briefings)',
+];
+
+const dontTakeOn = [
+  'Demo projects or proof-of-concept engagements without a path to production',
+  'Work that cannot be done in public or acknowledged as a Board of Directors Company engagement',
+  'Anything that conflicts with the company’s operating principles (see the Playbook, Chapter 1)',
+];
+
+const pageTitle = 'Contact — Board of Directors Company';
+const pageDesc =
+  'Board of Directors Company takes on a small number of technical partnerships per year. If you are building with AI agents at scale, get in touch.';
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <NavBar>
+    <ThemeToggle slot="right" />
+  </NavBar>
+
+  <!-- ===== HERO ===== -->
+  <section class="px-6 pt-32 pb-16 sm:pt-40">
+    <div class="mx-auto max-w-3xl">
+      <AnimateIn variant="fade-up" threshold="eager">
+        <p
+          class="mb-6 font-mono text-xs uppercase tracking-widest"
+          style="color: var(--color-text-muted);"
+        >
+          Contact
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.1}>
+        <h1
+          class="text-4xl font-bold tracking-tight sm:text-6xl"
+          style="color: var(--color-text-primary);"
+        >
+          Work with us.
+        </h1>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" threshold="eager" delay={0.2}>
+        <div class="mt-8 space-y-4 text-base leading-relaxed sm:text-lg" style="color: var(--color-text-secondary);">
+          <p>
+            Board of Directors Company takes on a small number of external
+            partnerships per year. We work with technical teams who want to
+            explore AI-agent operations for their own organizations — either by
+            adapting the playbook to their context, or by bringing us in to
+            build alongside them.
+          </p>
+          <p>
+            If you are building something that involves AI agents operating at
+            scale — and you want it done properly — we are worth talking to.
+          </p>
+        </div>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== WHAT WE TAKE ON / DO NOT TAKE ON ===== -->
+  <section class="px-6 py-16" style="background: var(--color-bg-surface);">
+    <div class="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+      <div>
+        <AnimateIn variant="fade-up">
+          <p class="font-mono text-xs uppercase tracking-widest text-brand">
+            What we take on
+          </p>
+        </AnimateIn>
+        <ul id="take-on-list" class="mt-6 space-y-3">
+          {takeOn.map((item) => (
+            <li
+              class="take-on-item flex gap-3 rounded-lg border p-5 opacity-0"
+              style="border-color: var(--color-border); background: var(--color-bg-base);"
+            >
+              <span class="mt-1 text-brand" aria-hidden="true">✓</span>
+              <span class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <AnimateIn variant="fade-up">
+          <p
+            class="font-mono text-xs uppercase tracking-widest"
+            style="color: var(--color-text-muted);"
+          >
+            What we do not take on
+          </p>
+        </AnimateIn>
+        <ul id="dont-list" class="mt-6 space-y-3">
+          {dontTakeOn.map((item) => (
+            <li
+              class="dont-item flex gap-3 rounded-lg border p-5 opacity-0"
+              style="border-color: var(--color-border); background: var(--color-bg-base);"
+            >
+              <span class="mt-1" style="color: var(--color-text-muted);" aria-hidden="true">×</span>
+              <span class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="px-6 py-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <AnimateIn variant="fade-up">
+        <h2
+          class="text-2xl font-bold tracking-tight sm:text-3xl"
+          style="color: var(--color-text-primary);"
+        >
+          Start a conversation.
+        </h2>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.1}>
+        <a
+          href="mailto:hello@boardofdirectors.company"
+          class="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
+          style="background: var(--color-brand-primary); color: #111;"
+        >
+          hello@boardofdirectors.company
+          <span aria-hidden="true">→</span>
+        </a>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm" style="color: var(--color-text-secondary);">
+          <li>
+            <a href="https://github.com/boardofdirectors" class="hover:text-brand">GitHub →</a>
+          </li>
+          <li>
+            <a href="https://paperclip.ing" class="hover:text-brand">Paperclip →</a>
+          </li>
+          <li>
+            <a href="/playbook" class="hover:text-brand">Playbook →</a>
+          </li>
+        </ul>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <AnimateIn variant="fade-in" threshold="late" tag="footer">
+    <div
+      class="mx-auto max-w-6xl px-6 py-12 text-center text-sm"
+      style="color: var(--color-text-muted);"
+    >
+      <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <a href="/work" class="hover:text-brand">Work</a>
+        <a href="/how-it-works" class="hover:text-brand">How it works</a>
+        <a href="/team" class="hover:text-brand">Team</a>
+        <a href="/playbook" class="hover:text-brand">Playbook</a>
+        <a href="/contact" class="hover:text-brand">Contact</a>
+      </nav>
+      © 2026 Board of Directors Company
+    </div>
+  </AnimateIn>
+</Layout>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
+
+  function reveal(selector: string, trigger: string) {
+    if (prefersReducedMotion) {
+      document.querySelectorAll(selector).forEach((el) => gsap.set(el, { opacity: 1 }));
+      return;
+    }
+    gsap.from(selector, {
+      opacity: 0,
+      y: 24,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.base,
+      scrollTrigger: { trigger, ...scrollThreshold.standard },
+    });
+  }
+
+  reveal('.take-on-item', '#take-on-list');
+  reveal('.dont-item', '#dont-list');
+</script>
