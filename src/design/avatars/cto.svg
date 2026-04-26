@@ -1,45 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
      role="img" aria-labelledby="cto-title">
-  <title id="cto-title">CTO — Circuit Trace</title>
+  <title id="cto-title">CTO — Robot Technician</title>
 
+  <!-- Background -->
   <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#06B6D4" stroke-width="0.5" stroke-opacity="0.08"/>
 
-  <!-- Horizontal main bus -->
-  <line x1="32" y1="100" x2="168" y2="100" stroke="#06B6D4" stroke-width="2" stroke-opacity="0.5"/>
-  <!-- Vertical main bus -->
-  <line x1="100" y1="32" x2="100" y2="168" stroke="#06B6D4" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- Antenna -->
+  <line x1="100" y1="34" x2="100" y2="66" stroke="#06B6D4" stroke-width="2" stroke-opacity="0.7"/>
+  <circle cx="100" cy="28" r="8" fill="#0E0E16" stroke="#06B6D4" stroke-width="2"/>
+  <circle cx="100" cy="28" r="4" fill="#06B6D4" opacity="0.9"/>
+  <circle cx="100" cy="28" r="14" fill="none" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.3"/>
 
-  <!-- L-trace top-left -->
-  <polyline points="50,68 50,100 68,100" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- L-trace top-right -->
-  <polyline points="150,68 150,100 132,100" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- L-trace bottom-left -->
-  <polyline points="50,132 50,100 68,100" fill="none" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- L-trace bottom-right -->
-  <polyline points="150,132 150,100 132,100" fill="none" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Robot head -->
+  <rect x="66" y="66" width="68" height="58" rx="8"
+        fill="#0E0E16" stroke="#06B6D4" stroke-width="2"/>
 
-  <!-- Branch traces -->
-  <line x1="100" y1="68" x2="76" y2="68" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
-  <line x1="100" y1="68" x2="124" y2="68" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
-  <line x1="100" y1="132" x2="76" y2="132" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
-  <line x1="100" y1="132" x2="124" y2="132" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.5"/>
+  <!-- Visor strip -->
+  <rect x="70" y="80" width="60" height="20" rx="3"
+        fill="#06B6D4" opacity="0.08" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.3"/>
 
-  <!-- Nodes (IC pads) -->
-  <circle cx="50" cy="68" r="4" fill="#06B6D4" opacity="0.8"/>
-  <circle cx="150" cy="68" r="4" fill="#06B6D4" opacity="0.8"/>
-  <circle cx="50" cy="132" r="4" fill="#06B6D4" opacity="0.8"/>
-  <circle cx="150" cy="132" r="4" fill="#06B6D4" opacity="0.8"/>
-  <circle cx="76" cy="68" r="2.5" fill="#06B6D4" opacity="0.6"/>
-  <circle cx="124" cy="68" r="2.5" fill="#06B6D4" opacity="0.6"/>
-  <circle cx="76" cy="132" r="2.5" fill="#06B6D4" opacity="0.6"/>
-  <circle cx="124" cy="132" r="2.5" fill="#06B6D4" opacity="0.6"/>
+  <!-- Left eye -->
+  <rect x="76" y="83" width="20" height="14" rx="3" fill="#06B6D4" opacity="0.85"/>
+  <rect x="80" y="86" width="8" height="8" rx="1" fill="#0E0E16"/>
+  <circle cx="82" cy="88" r="2" fill="#06B6D4" opacity="0.7"/>
 
-  <!-- Center IC chip -->
-  <rect x="76" y="76" width="48" height="48" rx="4" fill="#0E0E16" stroke="#06B6D4" stroke-width="2"/>
-  <rect x="84" y="84" width="32" height="32" rx="2" fill="#06B6D4" opacity="0.12"/>
+  <!-- Right eye -->
+  <rect x="104" y="83" width="20" height="14" rx="3" fill="#06B6D4" opacity="0.85"/>
+  <rect x="108" y="86" width="8" height="8" rx="1" fill="#0E0E16"/>
+  <circle cx="110" cy="88" r="2" fill="#06B6D4" opacity="0.7"/>
 
-  <!-- Center cross / processor mark -->
-  <line x1="88" y1="100" x2="112" y2="100" stroke="#06B6D4" stroke-width="2"/>
-  <line x1="100" y1="88" x2="100" y2="112" stroke="#06B6D4" stroke-width="2"/>
-  <circle cx="100" cy="100" r="5" fill="#06B6D4"/>
+  <!-- Mouth grill -->
+  <line x1="80" y1="108" x2="88" y2="108" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="93" y1="108" x2="107" y2="108" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="112" y1="108" x2="120" y2="108" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Side indicator lights -->
+  <circle cx="66" cy="86" r="4" fill="#06B6D4" opacity="0.6"/>
+  <circle cx="66" cy="100" r="3" fill="#06B6D4" opacity="0.3"/>
+  <circle cx="134" cy="86" r="4" fill="#06B6D4" opacity="0.6"/>
+  <circle cx="134" cy="100" r="3" fill="#06B6D4" opacity="0.3"/>
+
+  <!-- Circuit traces on head -->
+  <line x1="82" y1="70" x2="82" y2="78" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="100" y1="70" x2="100" y2="80" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="118" y1="70" x2="118" y2="78" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- Body / shoulders -->
+  <path d="M60,160 L72,124 L128,124 L140,160 L148,172 L52,172 Z"
+        fill="#06B6D4" opacity="0.08" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.25"/>
+  <!-- Chest badge -->
+  <rect x="90" y="133" width="20" height="14" rx="3"
+        fill="#06B6D4" opacity="0.15" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="94" y1="140" x2="106" y2="140" stroke="#06B6D4" stroke-width="1.5" stroke-opacity="0.6"/>
 </svg>

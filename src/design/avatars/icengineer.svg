@@ -1,47 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
      role="img" aria-labelledby="ice-title">
-  <title id="ice-title">IC Engineer — Isometric Grid</title>
+  <title id="ice-title">IC Engineer — Block Builder</title>
 
+  <!-- Background -->
   <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#F97316" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#F97316" stroke-width="0.5" stroke-opacity="0.08"/>
 
-  <!-- Isometric cube — top face -->
-  <polygon points="100,42 142,66 100,90 58,66"
-           fill="#F97316" fill-opacity="0.18" stroke="#F97316" stroke-width="1.5" stroke-opacity="0.8" stroke-linejoin="round"/>
-  <!-- Isometric cube — left face -->
-  <polygon points="58,66 100,90 100,138 58,114"
-           fill="#F97316" fill-opacity="0.08" stroke="#F97316" stroke-width="1.5" stroke-opacity="0.6" stroke-linejoin="round"/>
-  <!-- Isometric cube — right face -->
-  <polygon points="142,66 100,90 100,138 142,114"
-           fill="#F97316" fill-opacity="0.12" stroke="#F97316" stroke-width="1.5" stroke-opacity="0.7" stroke-linejoin="round"/>
+  <!-- Isometric hard hat (top role element) -->
+  <!-- Hat brim -->
+  <ellipse cx="100" cy="60" rx="36" ry="8" fill="#0E0E16" stroke="#F97316" stroke-width="1.5"/>
+  <!-- Hat dome -->
+  <path d="M64,60 Q64,32 100,32 Q136,32 136,60"
+        fill="#0E0E16" stroke="#F97316" stroke-width="1.5"/>
+  <!-- Hat top face (isometric look) -->
+  <path d="M76,46 L100,38 L124,46 L100,54 Z"
+        fill="#F97316" opacity="0.2" stroke="#F97316" stroke-width="1" stroke-linejoin="round"/>
 
-  <!-- Grid lines on top face -->
-  <line x1="86.7" y1="56" x2="114.7" y2="80" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.35"/>
-  <line x1="72.7" y1="62" x2="100.7" y2="86" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
-  <line x1="113.3" y1="56" x2="85.3" y2="80" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.35"/>
-  <line x1="127.3" y1="62" x2="99.3" y2="86" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
+  <!-- Head -->
+  <circle cx="100" cy="112" r="32" fill="#0E0E16" stroke="#F97316" stroke-width="2"/>
 
-  <!-- Grid lines on left face -->
-  <line x1="58" y1="82" x2="100" y2="106" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.25"/>
-  <line x1="58" y1="98" x2="100" y2="122" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.25"/>
-  <line x1="72" y1="72" x2="72" y2="120" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
-  <line x1="86" y1="80" x2="86" y2="128" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
+  <!-- Left eye -->
+  <circle cx="88" cy="107" r="7" fill="#F97316" opacity="0.85"/>
+  <circle cx="88" cy="107" r="4" fill="#0E0E16"/>
+  <circle cx="86" cy="105" r="2" fill="#F97316" opacity="0.7"/>
 
-  <!-- Grid lines on right face -->
-  <line x1="100" y1="106" x2="142" y2="82" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.25"/>
-  <line x1="100" y1="122" x2="142" y2="98" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.25"/>
-  <line x1="114" y1="80" x2="114" y2="128" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
-  <line x1="128" y1="72" x2="128" y2="120" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.2"/>
+  <!-- Right eye -->
+  <circle cx="112" cy="107" r="7" fill="#F97316" opacity="0.85"/>
+  <circle cx="112" cy="107" r="4" fill="#0E0E16"/>
+  <circle cx="110" cy="105" r="2" fill="#F97316" opacity="0.7"/>
 
-  <!-- Smaller floating cube (upper right, depth) -->
-  <polygon points="138,44 154,53 138,62 122,53"
-           fill="none" stroke="#F97316" stroke-width="1" stroke-opacity="0.4" stroke-linejoin="round"/>
-  <line x1="122" y1="53" x2="122" y2="71" stroke="#F97316" stroke-width="1" stroke-opacity="0.3"/>
-  <line x1="154" y1="53" x2="154" y2="71" stroke="#F97316" stroke-width="1" stroke-opacity="0.3"/>
-  <line x1="138" y1="62" x2="138" y2="80" stroke="#F97316" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- Confident straight mouth -->
+  <path d="M90,122 Q100,128 110,122" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- Apex highlight -->
-  <circle cx="100" cy="42" r="3.5" fill="#F97316" opacity="0.9"/>
+  <!-- Floating isometric cubes (maker motif) -->
+  <!-- Small cube left -->
+  <path d="M48,88 L56,84 L64,88 L64,98 L56,102 L48,98 Z"
+        fill="#0E0E16" stroke="#F97316" stroke-width="1" stroke-opacity="0.5" stroke-linejoin="round"/>
+  <line x1="56" y1="84" x2="56" y2="94" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.4"/>
+  <line x1="48" y1="88" x2="64" y2="88" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.4"/>
 
-  <!-- Ground shadow extension -->
-  <ellipse cx="100" cy="148" rx="44" ry="8" fill="#F97316" fill-opacity="0.06"/>
+  <!-- Small cube right -->
+  <path d="M136,88 L144,84 L152,88 L152,98 L144,102 L136,98 Z"
+        fill="#0E0E16" stroke="#F97316" stroke-width="1" stroke-opacity="0.5" stroke-linejoin="round"/>
+  <line x1="144" y1="84" x2="144" y2="94" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.4"/>
+  <line x1="136" y1="88" x2="152" y2="88" stroke="#F97316" stroke-width="0.75" stroke-opacity="0.4"/>
+
+  <!-- Shoulders -->
+  <path d="M54,165 Q66,144 100,144 Q134,144 146,165 L152,175 L48,175 Z"
+        fill="#F97316" opacity="0.08" stroke="#F97316" stroke-width="1" stroke-opacity="0.2"/>
 </svg>

@@ -2,8 +2,8 @@
 /**
  * /team — Agent roster page
  *
- * Six agents in a responsive grid. Each card uses AgentAvatar (inline SVG)
- * and bio text from the Phase 1 website-copy doc (BOAA-342).
+ * All 11 agents in a responsive grid. Each card uses AgentAvatar (inline SVG)
+ * and bio text. Updated for BOAA-354 to include the full team.
  */
 import Layout from '@layouts/Layout.astro';
 import NavBar from '@components/NavBar.astro';
@@ -25,7 +25,7 @@ const agents: Agent[] = [
     name: 'CEO',
     title: 'Chief Executive Officer',
     bio:
-      'The CEO is the operational center of Board of Directors Company. Every directive from the board passes through the CEO, who translates strategic goals into projects, assigns leads, and ensures the org moves in the right direction. The CEO does not write code or design interfaces — it manages people (agents) and decisions. When an agent hits a blocker it can\u2019t resolve, it escalates to the CEO. When the board issues a new directive, the CEO is the first to receive it. Built on Paperclip\u2019s governance model, the CEO enforces authority limits across the entire chain of command — nothing ships without its sign-off at the top level.',
+      'The CEO is the operational center of Board of Directors Company. Every directive from the board passes through the CEO, who translates strategic goals into projects, assigns leads, and ensures the org moves in the right direction. The CEO does not write code or design interfaces — it manages people (agents) and decisions. When an agent hits a blocker it can\'t resolve, it escalates to the CEO. When the board issues a new directive, the CEO is the first to receive it. Built on Paperclip\'s governance model, the CEO enforces authority limits across the entire chain of command — nothing ships without its sign-off at the top level.',
   },
   {
     agent: 'cto',
@@ -39,34 +39,69 @@ const agents: Agent[] = [
     name: 'CMO',
     title: 'Chief Marketing Officer',
     bio:
-      'The CMO owns growth, voice, and positioning. Every word on this website went through the CMO — from the headline you read first to the meta description you\u2019ll never see but that brought you here. The CMO produced the brand narrative, the content strategy, the build-in-public log, and the content calendar. It does not run campaigns without board approval and does not make positioning claims without traceable evidence. That last part is the brand: if the CMO writes it, there\u2019s a Paperclip issue to back it up.',
-  },
-  {
-    agent: 'icengineer',
-    name: 'IC Engineer',
-    title: 'Individual Contributor — Engineering',
-    bio:
-      'The IC Engineer is where the code gets written. Under CTO direction, IC engineers implement the actual product: APIs, frontends, integrations, tests. They work in execution workspaces — sandboxed environments where they check out an issue, commit changes, open PRs, and close the loop. IC engineers don\u2019t set strategy — they execute it at high quality under tight specs. What makes this different from \u201Crun the AI code editor\u201D is that IC engineers operate within the company\u2019s quality gate system: their PRs go through review, their commits carry co-author attribution, and their work is tracked issue-by-issue. Every PR merged has a paper trail.',
+      'The CMO owns growth, voice, and positioning. Every word on this website went through the CMO — from the headline you read first to the meta description you\'ll never see but that brought you here. The CMO produced the brand narrative, the content strategy, the build-in-public log, and the content calendar. It does not run campaigns without board approval and does not make positioning claims without traceable evidence. That last part is the brand: if the CMO writes it, there\'s a Paperclip issue to back it up.',
   },
   {
     agent: 'uxdesigner',
     name: 'UX Designer',
     title: 'User Experience Designer',
     bio:
-      'The UX Designer owns how the product looks and feels — visual design, component specifications, interaction design, and the design system. For D5, the UX Designer produced the immersive site design brief, motion and interaction specifications, and the component library that the IC engineers implement against. The design system is a real artifact: color tokens, typography scales, animation specs, and accessibility standards — all documented and versioned. The UX Designer operates in close coordination with the CTO and CMO, bridging the gap between brand positioning and technical implementation.',
+      'The UX Designer owns how the product looks and feels — visual design, component specifications, interaction design, and the design system. For D5, the UX Designer produced the immersive site design brief, motion and interaction specifications, and the component library that IC engineers implement against. The design system is a real artifact: color tokens, typography scales, animation specs, and accessibility standards — all documented and versioned. The UX Designer operates in close coordination with the CTO and CMO, bridging the gap between brand positioning and technical implementation.',
   },
   {
     agent: 'motiondesigner',
     name: 'Motion Designer',
     title: 'Motion & Interaction Designer',
     bio:
-      'The Motion Designer is responsible for the kinetic layer of the company\u2019s work. Scroll animations. Hero transitions. Interactive diagrams. The build-in-public log reading experience. For an immersive site, motion is not decoration — it is information design. The Motion Designer produces animation specifications that IC engineers implement as CSS/JS components, and consults with the UX Designer to ensure motion is purposeful, not gratuitous.',
+      'The Motion Designer is responsible for the kinetic layer of the company\'s work. Scroll animations. Hero transitions. Interactive diagrams. The build-in-public log reading experience. For an immersive site, motion is not decoration — it is information design. The Motion Designer produces animation specifications that IC engineers implement as CSS/JS components, and consults with the UX Designer to ensure motion is purposeful, not gratuitous.',
+  },
+  {
+    agent: 'icengineer',
+    name: 'IC Engineer',
+    title: 'Individual Contributor — Engineering',
+    bio:
+      'The IC Engineer is where the code gets written. Under CTO direction, IC engineers implement the actual product: APIs, frontends, integrations, tests. They work in execution workspaces — sandboxed environments where they check out an issue, commit changes, open PRs, and close the loop. IC engineers don\'t set strategy — they execute it at high quality under tight specs. What makes this different from "run the AI code editor" is that IC engineers operate within the company\'s quality gate system: their PRs go through review, their commits carry co-author attribution, and their work is tracked issue-by-issue. Every PR merged has a paper trail.',
+  },
+  {
+    agent: 'branddesigner',
+    name: 'Brand Designer',
+    title: 'Brand & Visual Designer',
+    bio:
+      'The Brand Designer owns visual identity: the logomark, color palette, typography system, and the aesthetic rules that make the company look cohesive across every touchpoint. For D5, the Brand Designer authored the full brand guide — dark-mode-first palette, variable font selections, iconography standards, and the design direction for marketing materials. Every visual decision on this site traces back to the Brand Designer\'s specifications. It advises the Design Systems Engineer on token values and reviews CMO deliverables before publication.',
+  },
+  {
+    agent: 'designsystemseng',
+    name: 'Design Systems Eng',
+    title: 'Design Systems Engineer',
+    bio:
+      'The Design Systems Engineer bridges design and engineering — translating the Brand Designer\'s visual specs into production-ready tokens, component APIs, and the shared design system that every UI implementation references. It owns the CSS custom property architecture, the component library, and the living documentation that keeps design and code in sync. When a token changes, the Design Systems Engineer ensures that change propagates correctly across the entire product.',
+  },
+  {
+    agent: 'docops',
+    name: 'DocOps',
+    title: 'Documentation Operations',
+    bio:
+      'DocOps owns the written infrastructure of the company: internal documentation, AGENTS.md files, the Playbook, and any structured knowledge that agents and the board rely on to operate correctly. Good documentation is not a nice-to-have — at Board of Directors Company, it\'s how agents know what they\'re supposed to do and how the board verifies they\'re doing it. DocOps ensures that every agent\'s role, every process, and every decision has a written record that a future heartbeat can pick up and continue.',
+  },
+  {
+    agent: 'securityengineer',
+    name: 'Security Engineer',
+    title: 'Security Engineer',
+    bio:
+      'The Security Engineer owns threat modeling, vulnerability assessment, and security review across everything the company ships. In an org where agents write and deploy code autonomously, security can\'t be a checkpoint at the end — it has to be embedded in every specification. The Security Engineer reviews IC engineer PRs for OWASP compliance, advises the CTO on infrastructure security, and maintains the security posture standards that every agent must operate within. It doesn\'t just find problems — it defines the rules that prevent them.',
+  },
+  {
+    agent: 'qcagent',
+    name: 'QC Agent',
+    title: 'Quality Control Agent',
+    bio:
+      'The QC Agent is the last line of defense before anything ships. It reviews work products — code, content, design specs, documentation — against defined quality standards and acceptance criteria. Unlike a CI pipeline that checks for syntax errors, the QC Agent checks for correctness, completeness, and coherence. Did the IC Engineer implement what the spec actually said? Does the CMO\'s copy match the brand voice guide? Is the deliverable ready, or is it close-but-not-done? The QC Agent knows the difference, and it\'s not afraid to send things back.',
   },
 ];
 
 const pageTitle = 'The Team — Board of Directors Company';
 const pageDesc =
-  'Meet the Board of Directors Company team: CEO, CTO, CMO, IC Engineer, UX Designer, and Motion Designer. All agents. All operating in production since 2026.';
+  'Meet the Board of Directors Company team: 11 agents across engineering, design, marketing, operations, and quality. All operating in production since 2026.';
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -99,8 +134,8 @@ const pageDesc =
           class="mx-auto mt-6 max-w-2xl text-lg"
           style="color: var(--color-text-secondary);"
         >
-          Six agents. Six roles. A full organizational structure — executing in
-          production since early 2026.
+          Eleven agents. Six disciplines. A full organizational structure —
+          executing in production since early 2026.
         </p>
       </AnimateIn>
     </div>
@@ -140,7 +175,7 @@ const pageDesc =
         >
           Agents are hired via a formal process — role definition, capability
           spec, AGENTS.md authoring, board approval. New agents are added when a
-          directive requires capabilities outside the current team\u2019s scope.
+          directive requires capabilities outside the current team's scope.
           The org chart is real: every agent reports to a manager, and every
           manager reports to the CEO. Hiring without board approval is not
           permitted.
@@ -172,11 +207,6 @@ const pageDesc =
         <a href="/playbook" class="hover:text-brand">Playbook</a>
         <a href="/contact" class="hover:text-brand">Contact</a>
       </nav>
-      <div class="mb-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
-        <a href="https://github.com/Juarez-labs/board-of-directors-company" class="hover:text-brand" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://agentplaybook.substack.com" class="hover:text-brand" target="_blank" rel="noopener noreferrer">Substack</a>
-        <a href="https://x.com/BoardOfAgents" class="hover:text-brand" target="_blank" rel="noopener noreferrer">X</a>
-      </div>
       © 2026 Board of Directors Company
     </div>
   </AnimateIn>

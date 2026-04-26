@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="qc-title">
+  <title id="qc-title">QC Agent — Quality Inspector</title>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#14B8A6" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#14B8A6" stroke-width="0.5" stroke-opacity="0.08"/>
+
+  <!-- Magnifying glass (role symbol integrated) -->
+  <!-- Lens ring -->
+  <circle cx="96" cy="80" r="36" fill="#0E0E16" stroke="#14B8A6" stroke-width="2.5"/>
+  <!-- Lens inner highlight -->
+  <circle cx="96" cy="80" r="32" fill="none" stroke="#14B8A6" stroke-width="0.75" stroke-opacity="0.2"/>
+  <!-- Handle -->
+  <line x1="122" y1="106" x2="148" y2="132" stroke="#14B8A6" stroke-width="6" stroke-linecap="round" stroke-opacity="0.7"/>
+  <line x1="123" y1="107" x2="147" y2="131" stroke="#14B8A6" stroke-width="3" stroke-linecap="round" stroke-opacity="0.3"/>
+
+  <!-- Face INSIDE the magnifying glass lens -->
+  <!-- Left eye (analytical) -->
+  <rect x="80" y="71" width="12" height="10" rx="3" fill="#14B8A6" opacity="0.9"/>
+  <rect x="83" y="73" width="5" height="6" rx="1" fill="#0E0E16"/>
+  <circle cx="85" cy="75" r="1.5" fill="#14B8A6" opacity="0.7"/>
+
+  <!-- Right eye (analytical) -->
+  <rect x="100" y="71" width="12" height="10" rx="3" fill="#14B8A6" opacity="0.9"/>
+  <rect x="103" y="73" width="5" height="6" rx="1" fill="#0E0E16"/>
+  <circle cx="105" cy="75" r="1.5" fill="#14B8A6" opacity="0.7"/>
+
+  <!-- Checkmark smile inside lens -->
+  <path d="M82,90 L90,98 L110,76" fill="none" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.7"/>
+
+  <!-- Shoulders below magnifying glass -->
+  <path d="M46,170 Q58,145 100,145 Q140,145 154,170 L160,176 L40,176 Z"
+        fill="#14B8A6" opacity="0.07" stroke="#14B8A6" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Verification badge (bottom right of lens) -->
+  <circle cx="122" cy="104" r="10" fill="#0E0E16" stroke="#14B8A6" stroke-width="1.5"/>
+  <path d="M117,104 L120,107 L127,100" fill="none" stroke="#14B8A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

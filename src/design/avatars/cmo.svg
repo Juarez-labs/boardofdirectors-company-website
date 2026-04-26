@@ -1,31 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
      role="img" aria-labelledby="cmo-title">
-  <title id="cmo-title">CMO — Wave Flow</title>
+  <title id="cmo-title">CMO — Signal Broadcaster</title>
 
+  <!-- Background -->
   <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#EC4899" stroke-width="0.5" stroke-opacity="0.08"/>
 
-  <!-- Wave layers — flowing sine curves -->
-  <path d="M28,80 C52,60 76,100 100,80 C124,60 148,100 172,80"
-        fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.25" stroke-linecap="round"/>
-  <path d="M28,92 C52,72 76,112 100,92 C124,72 148,112 172,92"
-        fill="none" stroke="#EC4899" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-  <path d="M28,104 C52,84 76,124 100,104 C124,84 148,124 172,104"
-        fill="none" stroke="#EC4899" stroke-width="2.5" stroke-opacity="0.8" stroke-linecap="round"/>
-  <path d="M28,116 C52,96 76,136 100,116 C124,96 148,136 172,116"
-        fill="none" stroke="#EC4899" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-  <path d="M28,128 C52,108 76,148 100,128 C124,108 148,148 172,128"
-        fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.25" stroke-linecap="round"/>
+  <!-- Broadcast signal arcs (left) -->
+  <path d="M52,76 Q36,100 52,124" fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M42,68 Q20,100 42,132" fill="none" stroke="#EC4899" stroke-width="1" stroke-opacity="0.3" stroke-linecap="round"/>
 
-  <!-- Radiate dots along primary wave -->
-  <circle cx="52" cy="86" r="3" fill="#EC4899" opacity="0.7"/>
-  <circle cx="100" cy="104" r="4" fill="#EC4899" opacity="0.9"/>
-  <circle cx="148" cy="86" r="3" fill="#EC4899" opacity="0.7"/>
+  <!-- Broadcast signal arcs (right) -->
+  <path d="M148,76 Q164,100 148,124" fill="none" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M158,68 Q180,100 158,132" fill="none" stroke="#EC4899" stroke-width="1" stroke-opacity="0.3" stroke-linecap="round"/>
 
-  <!-- Center glow dot -->
-  <circle cx="100" cy="104" r="8" fill="#EC4899" opacity="0.15"/>
-  <circle cx="100" cy="104" r="4" fill="#EC4899"/>
+  <!-- Signal source dots -->
+  <circle cx="52" cy="100" r="3" fill="#EC4899" opacity="0.5"/>
+  <circle cx="148" cy="100" r="3" fill="#EC4899" opacity="0.5"/>
 
-  <!-- Subtle broadcast arcs -->
-  <path d="M68,64 Q100,40 132,64" fill="none" stroke="#EC4899" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
-  <path d="M56,52 Q100,22 144,52" fill="none" stroke="#EC4899" stroke-width="0.75" stroke-opacity="0.1" stroke-linecap="round"/>
+  <!-- Head -->
+  <circle cx="100" cy="104" r="34" fill="#0E0E16" stroke="#EC4899" stroke-width="2"/>
+
+  <!-- Hair / top flair -->
+  <path d="M80,80 Q100,62 120,80" fill="none" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="100" cy="68" r="5" fill="#EC4899" opacity="0.7"/>
+
+  <!-- Left eye -->
+  <ellipse cx="88" cy="100" rx="7" ry="8" fill="#EC4899" opacity="0.9"/>
+  <ellipse cx="88" cy="101" rx="4" ry="5" fill="#0E0E16"/>
+  <circle cx="87" cy="99" r="1.5" fill="#EC4899" opacity="0.8"/>
+
+  <!-- Right eye -->
+  <ellipse cx="112" cy="100" rx="7" ry="8" fill="#EC4899" opacity="0.9"/>
+  <ellipse cx="112" cy="101" rx="4" ry="5" fill="#0E0E16"/>
+  <circle cx="111" cy="99" r="1.5" fill="#EC4899" opacity="0.8"/>
+
+  <!-- Smile -->
+  <path d="M90,116 Q100,124 110,116" fill="none" stroke="#EC4899" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Cheek blush marks -->
+  <ellipse cx="80" cy="112" rx="6" ry="3" fill="#EC4899" opacity="0.2"/>
+  <ellipse cx="120" cy="112" rx="6" ry="3" fill="#EC4899" opacity="0.2"/>
+
+  <!-- Shoulders -->
+  <path d="M54,164 Q66,138 100,138 Q134,138 146,164 L152,175 L48,175 Z"
+        fill="#EC4899" opacity="0.08" stroke="#EC4899" stroke-width="1" stroke-opacity="0.2"/>
 </svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="docops-title">
+  <title id="docops-title">DocOps — Document Keeper</title>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#EAB308" stroke-width="0.5" stroke-opacity="0.08"/>
+
+  <!-- Document stack (top role symbol) -->
+  <!-- Back doc -->
+  <rect x="76" y="32" width="50" height="38" rx="4"
+        fill="#0E0E16" stroke="#EAB308" stroke-width="1" stroke-opacity="0.3"
+        transform="rotate(6 101 51)"/>
+  <!-- Main doc -->
+  <rect x="72" y="30" width="52" height="40" rx="4"
+        fill="#0E0E16" stroke="#EAB308" stroke-width="1.5"/>
+  <!-- Dog-ear fold -->
+  <polygon points="112,30 124,30 124,42" fill="#EAB308" opacity="0.3"/>
+  <line x1="112" y1="30" x2="112" y2="42" stroke="#EAB308" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="112" y1="42" x2="124" y2="42" stroke="#EAB308" stroke-width="1" stroke-opacity="0.5"/>
+  <!-- Doc lines -->
+  <line x1="80" y1="40" x2="108" y2="40" stroke="#EAB308" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="80" y1="47" x2="110" y2="47" stroke="#EAB308" stroke-width="1" stroke-opacity="0.35"/>
+  <line x1="80" y1="54" x2="104" y2="54" stroke="#EAB308" stroke-width="1" stroke-opacity="0.25"/>
+  <!-- Quill pen crossing document -->
+  <line x1="118" y1="28" x2="86" y2="66" stroke="#EAB308" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7"/>
+  <polygon points="118,28 122,34 128,24 122,26" fill="#EAB308" opacity="0.7"/>
+
+  <!-- Head -->
+  <circle cx="100" cy="113" r="32" fill="#0E0E16" stroke="#EAB308" stroke-width="2"/>
+
+  <!-- Glasses (reading) -->
+  <rect x="78" y="104" width="16" height="10" rx="4"
+        fill="none" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.7"/>
+  <rect x="106" y="104" width="16" height="10" rx="4"
+        fill="none" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.7"/>
+  <line x1="94" y1="109" x2="106" y2="109" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- Glasses arms -->
+  <line x1="78" y1="109" x2="70" y2="109" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="122" y1="109" x2="130" y2="109" stroke="#EAB308" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Eyes behind glasses -->
+  <circle cx="86" cy="109" r="3.5" fill="#EAB308" opacity="0.7"/>
+  <circle cx="114" cy="109" r="3.5" fill="#EAB308" opacity="0.7"/>
+
+  <!-- Neutral focused expression -->
+  <line x1="90" y1="124" x2="110" y2="124" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.6"/>
+
+  <!-- Shoulders -->
+  <path d="M54,165 Q66,145 100,145 Q134,145 146,165 L152,174 L48,174 Z"
+        fill="#EAB308" opacity="0.08" stroke="#EAB308" stroke-width="1" stroke-opacity="0.2"/>
+</svg>

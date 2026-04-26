@@ -11,7 +11,18 @@
  *   <AgentAvatar agent="cto" size={120} />
  */
 
-export type AgentId = 'ceo' | 'cto' | 'cmo' | 'uxdesigner' | 'motiondesigner' | 'icengineer';
+export type AgentId =
+  | 'ceo'
+  | 'cto'
+  | 'cmo'
+  | 'uxdesigner'
+  | 'motiondesigner'
+  | 'icengineer'
+  | 'branddesigner'
+  | 'designsystemseng'
+  | 'docops'
+  | 'securityengineer'
+  | 'qcagent';
 
 interface Props {
   agent: AgentId;
