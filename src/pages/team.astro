@@ -183,17 +183,10 @@ const pageDesc =
 
   // Agent card stagger reveal
   if (!prefersReducedMotion) {
-    gsap.from('.agent-card', {
-      opacity: 0,
-      y: 40,
-      duration: duration.moderate,
-      ease: ease.outExpo,
-      stagger: stagger.base,
-      scrollTrigger: {
-        trigger: '#agent-grid',
-        ...scrollThreshold.standard,
-      },
-    });
+    gsap.fromTo('.agent-card',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.base, scrollTrigger: { trigger: '#agent-grid', ...scrollThreshold.standard } },
+    );
   } else {
     document.querySelectorAll('.agent-card').forEach((el) => {
       gsap.set(el, { opacity: 1 });

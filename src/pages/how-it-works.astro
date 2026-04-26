@@ -318,14 +318,10 @@ const pageDesc =
       document.querySelectorAll(selector).forEach((el) => gsap.set(el, { opacity: 1 }));
       return;
     }
-    gsap.from(selector, {
-      opacity: 0,
-      y: 32,
-      duration: duration.moderate,
-      ease: ease.outExpo,
-      stagger: stagger.base,
-      scrollTrigger: { trigger, ...scrollThreshold.standard },
-    });
+    gsap.fromTo(selector,
+      { opacity: 0, y: 32 },
+      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.base, scrollTrigger: { trigger, ...scrollThreshold.standard } },
+    );
   }
 
   reveal('.agent-attr', '#agent-attrs');

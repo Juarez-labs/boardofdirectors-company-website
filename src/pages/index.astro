@@ -290,14 +290,10 @@ const pageDesc =
       if (el) gsap.set(el, { opacity: 1 });
     });
   } else {
-    gsap.from(heroElements, {
-      opacity: 0,
-      y: 24,
-      duration: duration.slow,
-      ease: ease.outExpo,
-      stagger: { amount: 0.5, from: 'start' },
-      delay: 0.2,
-    });
+    gsap.fromTo(heroElements,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: duration.slow, ease: ease.outExpo, stagger: { amount: 0.5, from: 'start' }, delay: 0.2 },
+    );
 
     // Scroll indicator pulse
     gsap.to('#scroll-indicator', {
@@ -311,28 +307,20 @@ const pageDesc =
 
   // Stat grid stagger reveal
   if (!prefersReducedMotion) {
-    gsap.from('.stat-item', {
-      opacity: 0,
-      y: 32,
-      duration: duration.moderate,
-      ease: ease.outExpo,
-      stagger: stagger.base,
-      scrollTrigger: { trigger: '#stat-grid', ...scrollThreshold.standard },
-    });
+    gsap.fromTo('.stat-item',
+      { opacity: 0, y: 32 },
+      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.base, scrollTrigger: { trigger: '#stat-grid', ...scrollThreshold.standard } },
+    );
   } else {
     document.querySelectorAll('.stat-item').forEach((el) => gsap.set(el, { opacity: 1 }));
   }
 
   // Feature card stagger reveal
   if (!prefersReducedMotion) {
-    gsap.from('.feature-card', {
-      opacity: 0,
-      y: 40,
-      duration: duration.moderate,
-      ease: ease.outExpo,
-      stagger: stagger.loose,
-      scrollTrigger: { trigger: '#feature-grid', ...scrollThreshold.standard },
-    });
+    gsap.fromTo('.feature-card',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.loose, scrollTrigger: { trigger: '#feature-grid', ...scrollThreshold.standard } },
+    );
   } else {
     document.querySelectorAll('.feature-card').forEach((el) => gsap.set(el, { opacity: 1 }));
   }

@@ -330,17 +330,10 @@ const pageDesc =
   import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
 
   if (!prefersReducedMotion) {
-    gsap.from('.chapter-card', {
-      opacity: 0,
-      y: 40,
-      duration: duration.moderate,
-      ease: ease.outExpo,
-      stagger: stagger.base,
-      scrollTrigger: {
-        trigger: '#chapter-grid',
-        ...scrollThreshold.standard,
-      },
-    });
+    gsap.fromTo('.chapter-card',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.base, scrollTrigger: { trigger: '#chapter-grid', ...scrollThreshold.standard } },
+    );
   } else {
     document.querySelectorAll('.chapter-card').forEach((el) => {
       gsap.set(el, { opacity: 1 });
