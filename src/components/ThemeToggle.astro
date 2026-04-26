@@ -55,6 +55,10 @@
   syncIcons();
 
   btn.addEventListener('click', () => {
+    // Capture button center for radial reveal origin
+    const rect = btn.getBoundingClientRect();
+    document.documentElement.style.setProperty('--vt-x', `${rect.left + rect.width / 2}px`);
+    document.documentElement.style.setProperty('--vt-y', `${rect.top + rect.height / 2}px`);
     toggleTheme();
     syncIcons();
   });

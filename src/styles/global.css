@@ -110,18 +110,21 @@
     }
   }
 
-  /* Bloom transition for theme switch */
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
-  }
-
-  ::view-transition-new(root) {
-    z-index: 1;
+  /* Radial reveal transition for theme switch */
+  @keyframes theme-radial-expand {
+    from { clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 50%)); }
+    to   { clip-path: circle(200% at var(--vt-x, 50%) var(--vt-y, 50%)); }
   }
 
   ::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+
+  ::view-transition-new(root) {
+    animation: theme-radial-expand 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    mix-blend-mode: normal;
     z-index: 9999;
   }
 }
