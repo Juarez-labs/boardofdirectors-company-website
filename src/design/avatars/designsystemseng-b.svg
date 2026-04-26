@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"
+     role="img" aria-labelledby="dse-b-title">
+  <title id="dse-b-title">Design Systems Engineer — Token Hex (Variant B)</title>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="96" fill="#0E0E16" stroke="#6366F1" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Hexagonal token rings (top role element) -->
+  <polygon points="100,32 114,40 114,56 100,64 86,56 86,40"
+           fill="none" stroke="#6366F1" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polygon points="100,38 110,44 110,56 100,62 90,56 90,44"
+           fill="#6366F1" opacity="0.1"/>
+  <circle cx="100" cy="50" r="6" fill="#6366F1" opacity="0.7"/>
+  <!-- Connecting lines downward -->
+  <line x1="100" y1="64" x2="100" y2="74" stroke="#6366F1" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Hexagonal head (unique to variant B) -->
+  <polygon points="100,68 128,84 128,116 100,132 72,116 72,84"
+           fill="#0E0E16" stroke="#6366F1" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Grid inside hexagonal head -->
+  <line x1="72" y1="100" x2="128" y2="100" stroke="#6366F1" stroke-width="0.75" stroke-opacity="0.2"/>
+  <line x1="100" y1="68" x2="100" y2="132" stroke="#6366F1" stroke-width="0.75" stroke-opacity="0.2"/>
+
+  <!-- Triple LED bar eye (display style) -->
+  <rect x="78" y="90" width="44" height="8" rx="4"
+        fill="#0E0E16" stroke="#6366F1" stroke-width="1" stroke-opacity="0.5"/>
+  <!-- Three LED segments -->
+  <rect x="80" y="92" width="12" height="4" rx="2" fill="#6366F1" opacity="0.9"/>
+  <rect x="94" y="92" width="12" height="4" rx="2" fill="#6366F1" opacity="0.6"/>
+  <rect x="108" y="92" width="12" height="4" rx="2" fill="#6366F1" opacity="0.3"/>
+
+  <!-- Lower display: status readout -->
+  <rect x="82" y="104" width="36" height="6" rx="3"
+        fill="none" stroke="#6366F1" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Status dots -->
+  <circle cx="88" cy="107" r="1.5" fill="#6366F1" opacity="0.7"/>
+  <circle cx="94" cy="107" r="1.5" fill="#6366F1" opacity="0.5"/>
+  <circle cx="100" cy="107" r="1.5" fill="#6366F1" opacity="0.3"/>
+
+  <!-- Flat mouth line -->
+  <line x1="86" y1="120" x2="114" y2="120" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+
+  <!-- Shoulders -->
+  <path d="M56,166 Q68,140 100,140 Q132,140 144,166 L150,175 L50,175 Z"
+        fill="#6366F1" opacity="0.08" stroke="#6366F1" stroke-width="1" stroke-opacity="0.2"/>
+</svg>
