@@ -1,0 +1,133 @@
+---
+/**
+ * GradientMesh — Animated gradient mesh hero background
+ *
+ * Full-viewport animated background using CSS + GSAP.
+ * Blobs drift slowly using ambient duration tokens.
+ * Respects prefers-reduced-motion (static gradient fallback).
+ *
+ * Usage:
+ *   <GradientMesh />               — default yellow/purple brand colors
+ *   <GradientMesh variant="dark" /> — dark-optimized version
+ */
+
+interface Props {
+  variant?: 'default' | 'dark';
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+---
+
+<div
+  class:list={['gradient-mesh', `gradient-mesh--${variant}`, className]}
+  aria-hidden="true"
+>
+  <div class="gradient-mesh__blob gradient-mesh__blob--1"></div>
+  <div class="gradient-mesh__blob gradient-mesh__blob--2"></div>
+  <div class="gradient-mesh__blob gradient-mesh__blob--3"></div>
+</div>
+
+<style>
+  .gradient-mesh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .gradient-mesh__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    will-change: transform;
+  }
+
+  /* Blob 1 — brand primary (yellow) */
+  .gradient-mesh__blob--1 {
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    max-height: 800px;
+    background: radial-gradient(circle, #eab308 0%, transparent 70%);
+    top: -20%;
+    left: -15%;
+  }
+
+  /* Blob 2 — brand secondary (purple) */
+  .gradient-mesh__blob--2 {
+    width: 50vw;
+    height: 50vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+    top: 10%;
+    right: -20%;
+  }
+
+  /* Blob 3 — accent midpoint (blue-teal) */
+  .gradient-mesh__blob--3 {
+    width: 40vw;
+    height: 40vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+    bottom: -10%;
+    left: 30%;
+  }
+
+  /* Dark variant — deeper opacity */
+  .gradient-mesh--dark .gradient-mesh__blob {
+    opacity: 0.2;
+  }
+
+  /* Reduced motion — completely static */
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-mesh__blob {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease } from '@/lib/motion-tokens';
+
+  if (!prefersReducedMotion) {
+    const blobs = document.querySelectorAll('.gradient-mesh__blob');
+
+    // Blob 1 — slow drift top-left
+    gsap.to(blobs[0], {
+      x: '8vw',
+      y: '5vw',
+      duration: duration.ambient * 1.2,
+      ease: ease.inOutSine,
+      repeat: -1,
+      yoyo: true,
+    });
+
+    // Blob 2 — drift top-right, slightly offset timing
+    gsap.to(blobs[1], {
+      x: '-6vw',
+      y: '8vw',
+      duration: duration.ambient * 0.9,
+      ease: ease.inOutSine,
+      repeat: -1,
+      yoyo: true,
+      delay: 0.8,
+    });
+
+    // Blob 3 — drift bottom-center
+    gsap.to(blobs[2], {
+      x: '4vw',
+      y: '-6vw',
+      duration: duration.ambient * 1.1,
+      ease: ease.inOutSine,
+      repeat: -1,
+      yoyo: true,
+      delay: 1.5,
+    });
+  }
+</script>

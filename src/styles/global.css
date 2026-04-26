@@ -23,13 +23,40 @@
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-    /* Motion tokens (placeholder — MotionDesigner to refine in Phase 2) */
-    --motion-duration-fast: 150ms;
-    --motion-duration-base: 300ms;
-    --motion-duration-slow: 600ms;
-    --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-    --motion-stagger-base: 80ms;
+    /* === MOTION TOKENS — MotionDesigner spec v1.0 (BOAA-341) === */
+
+    /* Duration */
+    --duration-instant:   0ms;
+    --duration-fast:      120ms;
+    --duration-base:      250ms;
+    --duration-moderate:  400ms;
+    --duration-slow:      600ms;
+    --duration-xslow:     1000ms;
+    --duration-ambient:   3000ms;
+
+    /* Easing */
+    --ease-linear:        linear;
+    --ease-standard:      cubic-bezier(0.4,  0,    0.2,  1);
+    --ease-out-expo:      cubic-bezier(0.16, 1,    0.3,  1);
+    --ease-out-quart:     cubic-bezier(0.25, 1,    0.5,  1);
+    --ease-decelerate:    cubic-bezier(0,    0,    0.2,  1);
+    --ease-accelerate:    cubic-bezier(0.4,  0,    1,    1);
+    --ease-in-quart:      cubic-bezier(0.5,  0,    0.75, 0);
+    --ease-in-out-sine:   cubic-bezier(0.37, 0,    0.63, 1);
+    --ease-in-out-quart:  cubic-bezier(0.76, 0,    0.24, 1);
+    --ease-out-back:      cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Stagger */
+    --stagger-tight:      30ms;
+    --stagger-base:       60ms;
+    --stagger-loose:      100ms;
+    --stagger-spread:     150ms;
+
+    /* Scroll thresholds */
+    --scroll-eager:       10%;
+    --scroll-standard:    20%;
+    --scroll-late:        35%;
+    --scroll-pin:         50%;
   }
 
   [data-theme="dark"] {
@@ -41,6 +68,23 @@
     --color-text-secondary: #aaaaaa;
     --color-text-muted: #666666;
     --color-border: #2a2a2a;
+  }
+
+  /* Reduced motion — zero out all duration and stagger tokens */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --duration-instant:   0ms;
+      --duration-fast:      0ms;
+      --duration-base:      0ms;
+      --duration-moderate:  0ms;
+      --duration-slow:      0ms;
+      --duration-xslow:     0ms;
+      --duration-ambient:   0ms;
+      --stagger-tight:      0ms;
+      --stagger-base:       0ms;
+      --stagger-loose:      0ms;
+      --stagger-spread:     0ms;
+    }
   }
 }
 
@@ -92,4 +136,23 @@
   .border-subtle { border-color: var(--color-border); }
   .text-muted { color: var(--color-text-muted); }
   .text-secondary-color { color: var(--color-text-secondary); }
+}
+
+/* ============================================================
+   ANIMATION UTILITIES
+   ============================================================ */
+@layer utilities {
+  /* Initial hidden state — AnimateIn sets this before JS hydrates */
+  .animate-in-ready {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  /* Navigation scroll state — applied by NavBar.astro script */
+  .nav-scrolled {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--color-bg-base) 80%, transparent);
+    box-shadow: 0 1px 0 var(--color-border);
+  }
 }

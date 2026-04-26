@@ -1,0 +1,118 @@
+---
+/**
+ * NavBar — Site navigation with scroll shrink/blur behavior
+ *
+ * Behavior:
+ * - Fixed at top of viewport
+ * - On scroll past threshold: shrinks height, adds backdrop blur, shows border
+ * - GSAP-driven for smooth transition with motion tokens
+ * - prefers-reduced-motion: uses CSS transition only, no GSAP animation
+ *
+ * Usage:
+ *   <NavBar />
+ *   <NavBar logoHref="/" />
+ */
+
+interface Props {
+  logoHref?: string;
+}
+
+const { logoHref = '/' } = Astro.props;
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-colors"
+  style="will-change: padding, backdrop-filter;"
+>
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <!-- Logo -->
+    <a
+      href={logoHref}
+      class="flex items-center gap-2 font-mono text-sm font-semibold tracking-widest uppercase"
+      style="color: var(--color-text-primary);"
+    >
+      <span class="text-brand">▲</span>
+      <span>BOAC</span>
+    </a>
+
+    <!-- Nav links (Phase 3 will populate) -->
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+      <a href="/work"           class="nav-link">Work</a>
+      <a href="/how-it-works"   class="nav-link">How it works</a>
+      <a href="/team"           class="nav-link">Team</a>
+      <a href="/contact"        class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Right slot -->
+    <div class="flex items-center gap-4">
+      <slot name="right" />
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav-link {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    transition: color var(--duration-fast) var(--ease-standard);
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-primary);
+  }
+</style>
+
+<script>
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease } from '@/lib/motion-tokens';
+
+  const nav = document.getElementById('site-nav');
+  if (!nav) throw new Error('[NavBar] #site-nav not found');
+
+  const SCROLL_THRESHOLD = 60; // px before nav collapses
+
+  if (prefersReducedMotion) {
+    // CSS-only fallback: toggle class, rely on CSS transition
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    }, { passive: true });
+  } else {
+    let isScrolled = false;
+
+    function onScroll() {
+      const shouldBeScrolled = window.scrollY > SCROLL_THRESHOLD;
+      if (shouldBeScrolled === isScrolled) return;
+      isScrolled = shouldBeScrolled;
+
+      if (shouldBeScrolled) {
+        // Shrink nav
+        gsap.to(nav, {
+          paddingTop: '0px',
+          paddingBottom: '0px',
+          duration: duration.base,
+          ease: ease.outExpo,
+        });
+        nav.classList.add('nav-scrolled');
+      } else {
+        // Expand nav
+        gsap.to(nav, {
+          paddingTop: '0px',
+          paddingBottom: '0px',
+          duration: duration.base,
+          ease: ease.outExpo,
+        });
+        nav.classList.remove('nav-scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once on load in case page loads mid-scroll
+    onScroll();
+  }
+</script>

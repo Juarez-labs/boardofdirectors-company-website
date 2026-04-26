@@ -1,52 +1,269 @@
 ---
 /**
- * Homepage — Phase 0 scaffold placeholder
- * Full content to be delivered in Phase 3 (after CMO copy + UXDesigner design).
+ * Homepage — Phase 2 animation scaffold
+ *
+ * Demonstrates all Phase 1 animation primitives:
+ * - Gradient mesh hero background (GradientMesh)
+ * - NavBar with scroll shrink/blur
+ * - AnimateIn scroll-triggered reveals
+ * - Hero text stagger entrance
+ * - Stagger reveal for card/stat grids
+ *
+ * Full content (copy, design, avatars) delivered in Phase 3.
  */
 import Layout from '@layouts/Layout.astro';
 import ThemeToggle from '@components/ThemeToggle.astro';
+import NavBar from '@components/NavBar.astro';
+import GradientMesh from '@components/GradientMesh.astro';
+import AnimateIn from '@components/AnimateIn.astro';
 ---
 
 <Layout title="Board of Directors Company" description="AI-powered governance and execution.">
-  <header class="fixed top-0 right-0 z-50 p-4">
-    <ThemeToggle />
-  </header>
+  <!-- Navigation -->
+  <NavBar>
+    <ThemeToggle slot="right" />
+  </NavBar>
 
-  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-    <p class="text-muted mb-4 text-sm font-mono tracking-widest uppercase">
-      Phase 0 — Scaffold
-    </p>
-    <h1 class="text-4xl font-bold tracking-tight sm:text-6xl" style="color: var(--color-text-primary)">
-      Board of Directors Company
-    </h1>
-    <p class="text-secondary-color mt-4 max-w-xl text-lg">
-      AI-powered governance and execution.
-      <br />
-      <span class="text-brand">D5 website coming soon.</span>
-    </p>
+  <!-- ================================================================
+       HERO SECTION — gradient mesh + staggered text entrance
+       ================================================================ -->
+  <section class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+    <GradientMesh />
 
-    <!-- GSAP smoke test -->
-    <div id="gsap-test" class="mt-12 h-4 w-4 rounded-full bg-yellow-500 opacity-0"></div>
-  </main>
+    <div class="relative z-10 max-w-4xl">
+      <!-- Overline -->
+      <p
+        id="hero-overline"
+        class="mb-6 font-mono text-xs tracking-widest uppercase opacity-0"
+        style="color: var(--color-text-muted);"
+      >
+        Phase 2 — Animation Layer
+      </p>
+
+      <!-- Headline -->
+      <h1
+        id="hero-headline"
+        class="text-5xl font-bold tracking-tight opacity-0 sm:text-7xl"
+        style="color: var(--color-text-primary);"
+      >
+        Board of<br />
+        <span class="text-brand">Directors</span> Company
+      </h1>
+
+      <!-- Subline -->
+      <p
+        id="hero-subline"
+        class="mt-6 max-w-2xl text-xl opacity-0"
+        style="color: var(--color-text-secondary);"
+      >
+        AI-powered governance and execution.
+        The full website is coming in Phase 3.
+      </p>
+
+      <!-- CTA -->
+      <div id="hero-cta" class="mt-10 opacity-0">
+        <a
+          href="#how-it-works"
+          class="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
+          style="border-color: var(--color-border); color: var(--color-text-primary);"
+        >
+          See how it works
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      id="scroll-indicator"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0"
+      aria-hidden="true"
+    >
+      <div class="h-10 w-px" style="background: var(--color-border);"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       STAT BAR — stagger reveal on scroll
+       ================================================================ -->
+  <section id="how-it-works" class="py-24 px-6">
+    <div class="mx-auto max-w-5xl">
+      <AnimateIn variant="fade-up" threshold="standard">
+        <h2
+          class="mb-4 text-center text-3xl font-bold tracking-tight"
+          style="color: var(--color-text-primary);"
+        >
+          Built differently
+        </h2>
+        <p class="mb-16 text-center" style="color: var(--color-text-secondary);">
+          A company run entirely by AI agents under human governance.
+        </p>
+      </AnimateIn>
+
+      <!-- Stat grid — staggered via GSAP -->
+      <div id="stat-grid" class="grid grid-cols-2 gap-8 md:grid-cols-4">
+        {[
+          { stat: '6',     label: 'AI Agents' },
+          { stat: '100%',  label: 'Automated Execution' },
+          { stat: 'D5',    label: 'Active Directive' },
+          { stat: '∞',     label: 'Scalability' },
+        ].map((item) => (
+          <div
+            class="stat-item rounded-xl border p-6 text-center opacity-0"
+            style="border-color: var(--color-border); background: var(--color-bg-surface);"
+          >
+            <div class="text-4xl font-bold text-brand">{item.stat}</div>
+            <div class="mt-2 text-sm" style="color: var(--color-text-muted);">{item.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FEATURE CARDS — AnimateIn stagger
+       ================================================================ -->
+  <section class="py-24 px-6" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-5xl">
+      <AnimateIn variant="fade-up">
+        <h2
+          class="mb-16 text-center text-3xl font-bold tracking-tight"
+          style="color: var(--color-text-primary);"
+        >
+          How directives flow
+        </h2>
+      </AnimateIn>
+
+      <div id="feature-grid" class="grid gap-6 md:grid-cols-3">
+        {[
+          {
+            icon: '🎯',
+            title: 'Board issues directive',
+            body: 'A human board member creates a high-level directive. The CEO agent breaks it into goals and projects.',
+          },
+          {
+            icon: '⚙️',
+            title: 'Agents execute',
+            body: 'CTO, CMO, UXDesigner, and IC agents pick up tasks, check out, work, and report back — autonomously.',
+          },
+          {
+            icon: '✓',
+            title: 'Humans approve',
+            body: 'Key decisions surface as approval requests. Humans review, approve or reject, and agents continue.',
+          },
+        ].map((card) => (
+          <div
+            class="feature-card rounded-xl border p-8 opacity-0"
+            style="border-color: var(--color-border); background: var(--color-bg-base);"
+          >
+            <div class="mb-4 text-3xl">{card.icon}</div>
+            <h3 class="mb-3 text-lg font-semibold" style="color: var(--color-text-primary);">
+              {card.title}
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+              {card.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER PLACEHOLDER
+       ================================================================ -->
+  <AnimateIn variant="fade-in" threshold="late" tag="footer">
+    <div
+      class="mx-auto max-w-5xl px-6 py-12 text-center text-sm"
+      style="color: var(--color-text-muted);"
+    >
+      © 2026 Board of Directors Company · D5 website in progress
+    </div>
+  </AnimateIn>
 </Layout>
 
 <script>
-  import { gsap, ScrollTrigger } from '@utils/gsap';
+  import { gsap, prefersReducedMotion } from '@utils/gsap';
+  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
 
-  // Smoke test — verify GSAP + ScrollTrigger are working
-  const el = document.getElementById('gsap-test');
-  if (el) {
-    gsap.to(el, {
-      opacity: 1,
-      scale: 1.5,
-      duration: 0.6,
-      ease: 'power2.out',
+  // -----------------------------------------------------------------------
+  // Hero entrance — staggered sequence on page load
+  // -----------------------------------------------------------------------
+  const heroElements = [
+    '#hero-overline',
+    '#hero-headline',
+    '#hero-subline',
+    '#hero-cta',
+    '#scroll-indicator',
+  ];
+
+  if (prefersReducedMotion) {
+    heroElements.forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el) gsap.set(el, { opacity: 1 });
+    });
+  } else {
+    gsap.from(heroElements, {
+      opacity: 0,
+      y: 24,
+      duration: duration.slow,
+      ease: ease.outExpo,
+      stagger: { amount: 0.5, from: 'start' },
+      delay: 0.2,
+    });
+
+    // Scroll indicator pulse
+    gsap.to('#scroll-indicator', {
+      y: 8,
+      duration: duration.slow,
+      ease: ease.inOutSine,
+      repeat: -1,
       yoyo: true,
-      repeat: 1,
     });
   }
 
-  // Confirm ScrollTrigger loaded
-  console.info('[D5] GSAP version:', gsap.version);
-  console.info('[D5] ScrollTrigger registered:', ScrollTrigger.isTouch !== undefined);
+  // -----------------------------------------------------------------------
+  // Stat grid — stagger scroll reveal
+  // -----------------------------------------------------------------------
+  if (!prefersReducedMotion) {
+    gsap.from('.stat-item', {
+      opacity: 0,
+      y: 32,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.base,
+      scrollTrigger: {
+        trigger: '#stat-grid',
+        ...scrollThreshold.standard,
+      },
+    });
+  } else {
+    document.querySelectorAll('.stat-item').forEach((el) => {
+      gsap.set(el, { opacity: 1 });
+    });
+  }
+
+  // -----------------------------------------------------------------------
+  // Feature cards — stagger scroll reveal
+  // -----------------------------------------------------------------------
+  if (!prefersReducedMotion) {
+    gsap.from('.feature-card', {
+      opacity: 0,
+      y: 40,
+      duration: duration.moderate,
+      ease: ease.outExpo,
+      stagger: stagger.loose,
+      scrollTrigger: {
+        trigger: '#feature-grid',
+        ...scrollThreshold.standard,
+      },
+    });
+  } else {
+    document.querySelectorAll('.feature-card').forEach((el) => {
+      gsap.set(el, { opacity: 1 });
+    });
+  }
+
+  // Debug info in dev
+  console.info('[D5] Animation layer initialized. prefersReducedMotion:', prefersReducedMotion);
 </script>

@@ -1,0 +1,125 @@
+---
+/**
+ * AnimateIn — Scroll-triggered reveal island
+ *
+ * Wraps content and fades/slides it in when scrolled into view.
+ * Respects prefers-reduced-motion — instantly visible when set.
+ *
+ * Usage:
+ *   <AnimateIn>
+ *     <p>This content reveals on scroll</p>
+ *   </AnimateIn>
+ *
+ *   <AnimateIn variant="fade" threshold="eager" delay={0.1}>
+ *     <Card />
+ *   </AnimateIn>
+ *
+ * Props:
+ *   variant   — "fade-up" (default) | "fade-in" | "fade-down" | "fade-left" | "fade-right"
+ *   threshold — "eager" | "standard" (default) | "late"
+ *   delay     — additional delay in seconds (default 0)
+ *   duration  — override duration (default: token `moderate` = 0.4s)
+ *   stagger   — data-animate-stagger attribute value passed to stagger groups
+ *   once      — if true, animation only plays once (no reverse on scroll out). Default: false
+ *   tag       — HTML wrapper tag. Default: "div"
+ */
+
+interface Props {
+  variant?: 'fade-up' | 'fade-in' | 'fade-down' | 'fade-left' | 'fade-right';
+  threshold?: 'eager' | 'standard' | 'late';
+  delay?: number;
+  duration?: number;
+  once?: boolean;
+  tag?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'fade-up',
+  threshold = 'standard',
+  delay = 0,
+  duration,
+  once = false,
+  tag: Tag = 'div',
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  class:list={['animate-in-ready', className]}
+  data-animate-in
+  data-variant={variant}
+  data-threshold={threshold}
+  data-delay={delay}
+  data-duration={duration}
+  data-once={once}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<script>
+  import { gsap, ScrollTrigger, prefersReducedMotion } from '@utils/gsap';
+  import { duration as durationTokens, ease, scrollThreshold } from '@/lib/motion-tokens';
+
+  // Build the initial "from" state per variant
+  function getFromVars(variant: string): gsap.TweenVars {
+    const base: gsap.TweenVars = { opacity: 0 };
+    switch (variant) {
+      case 'fade-up':    return { ...base, y: 32 };
+      case 'fade-down':  return { ...base, y: -32 };
+      case 'fade-left':  return { ...base, x: 32 };
+      case 'fade-right': return { ...base, x: -32 };
+      case 'fade-in':
+      default:           return base;
+    }
+  }
+
+  // Initialize all AnimateIn elements on the page
+  function initAnimateIn() {
+    const elements = document.querySelectorAll<HTMLElement>('[data-animate-in]');
+
+    elements.forEach((el) => {
+      const variant   = el.dataset.variant   ?? 'fade-up';
+      const threshold = (el.dataset.threshold ?? 'standard') as keyof typeof scrollThreshold;
+      const delay     = parseFloat(el.dataset.delay   ?? '0');
+      const durOverride = el.dataset.duration ? parseFloat(el.dataset.duration) : undefined;
+      const once      = el.dataset.once === 'true';
+
+      const fromVars = getFromVars(variant);
+
+      if (prefersReducedMotion) {
+        // Skip animation entirely — make immediately visible
+        gsap.set(el, { opacity: 1, x: 0, y: 0 });
+        return;
+      }
+
+      gsap.set(el, fromVars);
+
+      gsap.to(el, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: durOverride ?? durationTokens.moderate,
+        delay,
+        ease: ease.outExpo,
+        scrollTrigger: {
+          trigger: el,
+          ...scrollThreshold[threshold],
+          toggleActions: once
+            ? 'play none none none'
+            : 'play none none reverse',
+        },
+      });
+    });
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimateIn);
+  } else {
+    initAnimateIn();
+  }
+</script>
