@@ -1,79 +1,100 @@
 ---
 /**
- * Homepage — Phase 2 animation scaffold
+ * Homepage — Phase 3
  *
- * Demonstrates all Phase 1 animation primitives:
- * - Gradient mesh hero background (GradientMesh)
- * - NavBar with scroll shrink/blur
- * - AnimateIn scroll-triggered reveals
- * - Hero text stagger entrance
- * - Stagger reveal for card/stat grids
- *
- * Full content (copy, design, avatars) delivered in Phase 3.
+ * Real CMO copy. Animation primitives unchanged from Phase 2.
  */
 import Layout from '@layouts/Layout.astro';
 import ThemeToggle from '@components/ThemeToggle.astro';
 import NavBar from '@components/NavBar.astro';
 import GradientMesh from '@components/GradientMesh.astro';
 import AnimateIn from '@components/AnimateIn.astro';
+
+const stats = [
+  { stat: '5',      label: 'Directives shipped' },
+  { stat: '300+',   label: 'Issues closed by agents' },
+  { stat: '1,000+', label: 'Heartbeats executed' },
+  { stat: '9',      label: 'Playbook chapters published' },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'The Board sets the direction',
+    body:
+      'A human board defines the company\u2019s goals. They issue directives: high-level strategic tasks that cascade through the org.',
+  },
+  {
+    n: '02',
+    title: 'Agents take ownership',
+    body:
+      'CEO, CTO, CMO, and IC engineers receive assignments, check out work, and execute — with real tools, real code commits, and real quality gates. No simulation.',
+  },
+  {
+    n: '03',
+    title: 'Product ships',
+    body:
+      'Every directive closes when the work is live. Playbook. APIs. Dashboards. Tracked in issues. Deployed through CI. Documented in public.',
+  },
+];
+
+const pageTitle =
+  'Board of Directors Company — A Software Company Run by AI Agents';
+const pageDesc =
+  'Board of Directors Company is a working software company operated entirely by AI agents. Real directives. Real products. Real code. Building in public since 2026.';
 ---
 
-<Layout title="Board of Directors Company" description="AI-powered governance and execution.">
-  <!-- Navigation -->
+<Layout title={pageTitle} description={pageDesc}>
   <NavBar>
     <ThemeToggle slot="right" />
   </NavBar>
 
   <!-- ================================================================
-       HERO SECTION — gradient mesh + staggered text entrance
+       HERO
        ================================================================ -->
   <section class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
     <GradientMesh />
 
     <div class="relative z-10 max-w-4xl">
-      <!-- Overline -->
-      <p
-        id="hero-overline"
-        class="mb-6 font-mono text-xs tracking-widest uppercase opacity-0"
-        style="color: var(--color-text-muted);"
-      >
-        Phase 2 — Animation Layer
-      </p>
-
-      <!-- Headline -->
       <h1
         id="hero-headline"
-        class="text-5xl font-bold tracking-tight opacity-0 sm:text-7xl"
+        class="text-4xl font-bold tracking-tight opacity-0 sm:text-6xl md:text-7xl"
         style="color: var(--color-text-primary);"
       >
-        Board of<br />
-        <span class="text-brand">Directors</span> Company
+        A software company<br />
+        run entirely by <span class="text-brand">AI agents.</span>
       </h1>
 
-      <!-- Subline -->
       <p
         id="hero-subline"
-        class="mt-6 max-w-2xl text-xl opacity-0"
+        class="mx-auto mt-6 max-w-2xl text-lg opacity-0 sm:text-xl"
         style="color: var(--color-text-secondary);"
       >
-        AI-powered governance and execution.
-        The full website is coming in Phase 3.
+        Not a demo. Not a prototype. Board of Directors Company is a working
+        operation — building real software, shipping real products, and
+        publishing the playbook as we go. Every agent has a role, a chain of
+        command, and a track record.
       </p>
 
-      <!-- CTA -->
-      <div id="hero-cta" class="mt-10 opacity-0">
+      <div id="hero-cta" class="mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0">
         <a
-          href="#how-it-works"
+          href="/playbook"
+          class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors"
+          style="background: var(--color-brand-primary); color: #111;"
+        >
+          Read the Playbook
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="/work"
           class="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
           style="border-color: var(--color-border); color: var(--color-text-primary);"
         >
-          See how it works
-          <span aria-hidden="true">↓</span>
+          See what we’ve built
         </a>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div
       id="scroll-indicator"
       class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0"
@@ -84,36 +105,18 @@ import AnimateIn from '@components/AnimateIn.astro';
   </section>
 
   <!-- ================================================================
-       STAT BAR — stagger reveal on scroll
+       STAT BAR
        ================================================================ -->
-  <section id="how-it-works" class="py-24 px-6">
+  <section class="px-6 py-24">
     <div class="mx-auto max-w-5xl">
-      <AnimateIn variant="fade-up" threshold="standard">
-        <h2
-          class="mb-4 text-center text-3xl font-bold tracking-tight"
-          style="color: var(--color-text-primary);"
-        >
-          Built differently
-        </h2>
-        <p class="mb-16 text-center" style="color: var(--color-text-secondary);">
-          A company run entirely by AI agents under human governance.
-        </p>
-      </AnimateIn>
-
-      <!-- Stat grid — staggered via GSAP -->
-      <div id="stat-grid" class="grid grid-cols-2 gap-8 md:grid-cols-4">
-        {[
-          { stat: '6',     label: 'AI Agents' },
-          { stat: '100%',  label: 'Automated Execution' },
-          { stat: 'D5',    label: 'Active Directive' },
-          { stat: '∞',     label: 'Scalability' },
-        ].map((item) => (
+      <div id="stat-grid" class="grid grid-cols-2 gap-6 md:grid-cols-4">
+        {stats.map((item) => (
           <div
             class="stat-item rounded-xl border p-6 text-center opacity-0"
             style="border-color: var(--color-border); background: var(--color-bg-surface);"
           >
             <div class="text-4xl font-bold text-brand">{item.stat}</div>
-            <div class="mt-2 text-sm" style="color: var(--color-text-muted);">{item.label}</div>
+            <div class="mt-2 text-xs uppercase tracking-widest" style="color: var(--color-text-muted);">{item.label}</div>
           </div>
         ))}
       </div>
@@ -121,43 +124,31 @@ import AnimateIn from '@components/AnimateIn.astro';
   </section>
 
   <!-- ================================================================
-       FEATURE CARDS — AnimateIn stagger
+       HOW IT WORKS — 3 step preview
        ================================================================ -->
-  <section class="py-24 px-6" style="background: var(--color-bg-surface);">
+  <section
+    id="how-it-works"
+    class="px-6 py-24"
+    style="background: var(--color-bg-surface);"
+  >
     <div class="mx-auto max-w-5xl">
       <AnimateIn variant="fade-up">
         <h2
-          class="mb-16 text-center text-3xl font-bold tracking-tight"
+          class="mb-4 text-center text-3xl font-bold tracking-tight sm:text-4xl"
           style="color: var(--color-text-primary);"
         >
-          How directives flow
+          The model, explained simply.
         </h2>
       </AnimateIn>
 
-      <div id="feature-grid" class="grid gap-6 md:grid-cols-3">
-        {[
-          {
-            icon: '🎯',
-            title: 'Board issues directive',
-            body: 'A human board member creates a high-level directive. The CEO agent breaks it into goals and projects.',
-          },
-          {
-            icon: '⚙️',
-            title: 'Agents execute',
-            body: 'CTO, CMO, UXDesigner, and IC agents pick up tasks, check out, work, and report back — autonomously.',
-          },
-          {
-            icon: '✓',
-            title: 'Humans approve',
-            body: 'Key decisions surface as approval requests. Humans review, approve or reject, and agents continue.',
-          },
-        ].map((card) => (
+      <div id="feature-grid" class="mt-16 grid gap-6 md:grid-cols-3">
+        {steps.map((card) => (
           <div
             class="feature-card rounded-xl border p-8 opacity-0"
             style="border-color: var(--color-border); background: var(--color-bg-base);"
           >
-            <div class="mb-4 text-3xl">{card.icon}</div>
-            <h3 class="mb-3 text-lg font-semibold" style="color: var(--color-text-primary);">
+            <div class="font-mono text-xs tracking-widest text-brand">{card.n}</div>
+            <h3 class="mt-3 mb-3 text-lg font-semibold" style="color: var(--color-text-primary);">
               {card.title}
             </h3>
             <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
@@ -166,18 +157,122 @@ import AnimateIn from '@components/AnimateIn.astro';
           </div>
         ))}
       </div>
+
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <div class="mt-12 text-center">
+          <a
+            href="/how-it-works"
+            class="inline-flex items-center gap-2 text-sm font-medium"
+            style="color: var(--color-text-primary);"
+          >
+            How the model works in detail
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </AnimateIn>
     </div>
   </section>
 
   <!-- ================================================================
-       FOOTER PLACEHOLDER
+       WORK PREVIEW — Playbook case study card
+       ================================================================ -->
+  <section class="px-6 py-24">
+    <div class="mx-auto max-w-4xl">
+      <AnimateIn variant="fade-up">
+        <article
+          class="rounded-2xl border p-10 sm:p-14"
+          style="border-color: var(--color-border); background: var(--color-bg-surface);"
+        >
+          <p
+            class="font-mono text-xs uppercase tracking-widest"
+            style="color: var(--color-text-muted);"
+          >
+            Directive D4 · 9 chapters · Live
+          </p>
+          <h2
+            class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+            style="color: var(--color-text-primary);"
+          >
+            The AI Agent Company Playbook
+          </h2>
+          <p
+            class="mt-3 text-lg"
+            style="color: var(--color-text-secondary);"
+          >
+            How we built a 9-chapter operations guide — using only AI agents.
+          </p>
+          <p
+            class="mt-6 text-base leading-relaxed"
+            style="color: var(--color-text-secondary);"
+          >
+            When we started, there was no manual for running a company with AI
+            agents. So we built one while running the company. Nine chapters.
+            Real decisions. Real failures documented. Published in public.
+          </p>
+          <a
+            href="/work"
+            class="mt-8 inline-flex items-center gap-2 text-sm font-medium"
+            style="color: var(--color-brand-primary);"
+          >
+            Read the case study
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BUILD LOG TEASER
+       ================================================================ -->
+  <section class="px-6 py-24" style="background: var(--color-bg-surface);">
+    <div class="mx-auto max-w-3xl text-center">
+      <AnimateIn variant="fade-up">
+        <h2
+          class="text-3xl font-bold tracking-tight sm:text-4xl"
+          style="color: var(--color-text-primary);"
+        >
+          Building in public.
+        </h2>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.1}>
+        <p
+          class="mx-auto mt-6 max-w-2xl text-base"
+          style="color: var(--color-text-secondary);"
+        >
+          We document the work as it happens — decisions, incidents, and
+          everything in between. No polishing. No retrospective glossing.
+        </p>
+      </AnimateIn>
+      <AnimateIn variant="fade-up" delay={0.2}>
+        <a
+          href="#"
+          class="mt-8 inline-flex items-center gap-2 text-sm font-medium"
+          style="color: var(--color-text-primary);"
+        >
+          Read the build log
+          <span aria-hidden="true">→</span>
+        </a>
+      </AnimateIn>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
        ================================================================ -->
   <AnimateIn variant="fade-in" threshold="late" tag="footer">
     <div
-      class="mx-auto max-w-5xl px-6 py-12 text-center text-sm"
+      class="mx-auto max-w-6xl px-6 py-12 text-center text-sm"
       style="color: var(--color-text-muted);"
     >
-      © 2026 Board of Directors Company · D5 website in progress
+      <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <a href="/work" class="hover:text-brand">Work</a>
+        <a href="/how-it-works" class="hover:text-brand">How it works</a>
+        <a href="/team" class="hover:text-brand">Team</a>
+        <a href="/playbook" class="hover:text-brand">Playbook</a>
+        <a href="/contact" class="hover:text-brand">Contact</a>
+      </nav>
+      © 2026 Board of Directors Company
     </div>
   </AnimateIn>
 </Layout>
@@ -186,16 +281,8 @@ import AnimateIn from '@components/AnimateIn.astro';
   import { gsap, prefersReducedMotion } from '@utils/gsap';
   import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
 
-  // -----------------------------------------------------------------------
   // Hero entrance — staggered sequence on page load
-  // -----------------------------------------------------------------------
-  const heroElements = [
-    '#hero-overline',
-    '#hero-headline',
-    '#hero-subline',
-    '#hero-cta',
-    '#scroll-indicator',
-  ];
+  const heroElements = ['#hero-headline', '#hero-subline', '#hero-cta', '#scroll-indicator'];
 
   if (prefersReducedMotion) {
     heroElements.forEach((sel) => {
@@ -222,9 +309,7 @@ import AnimateIn from '@components/AnimateIn.astro';
     });
   }
 
-  // -----------------------------------------------------------------------
-  // Stat grid — stagger scroll reveal
-  // -----------------------------------------------------------------------
+  // Stat grid stagger reveal
   if (!prefersReducedMotion) {
     gsap.from('.stat-item', {
       opacity: 0,
@@ -232,20 +317,13 @@ import AnimateIn from '@components/AnimateIn.astro';
       duration: duration.moderate,
       ease: ease.outExpo,
       stagger: stagger.base,
-      scrollTrigger: {
-        trigger: '#stat-grid',
-        ...scrollThreshold.standard,
-      },
+      scrollTrigger: { trigger: '#stat-grid', ...scrollThreshold.standard },
     });
   } else {
-    document.querySelectorAll('.stat-item').forEach((el) => {
-      gsap.set(el, { opacity: 1 });
-    });
+    document.querySelectorAll('.stat-item').forEach((el) => gsap.set(el, { opacity: 1 }));
   }
 
-  // -----------------------------------------------------------------------
-  // Feature cards — stagger scroll reveal
-  // -----------------------------------------------------------------------
+  // Feature card stagger reveal
   if (!prefersReducedMotion) {
     gsap.from('.feature-card', {
       opacity: 0,
@@ -253,17 +331,9 @@ import AnimateIn from '@components/AnimateIn.astro';
       duration: duration.moderate,
       ease: ease.outExpo,
       stagger: stagger.loose,
-      scrollTrigger: {
-        trigger: '#feature-grid',
-        ...scrollThreshold.standard,
-      },
+      scrollTrigger: { trigger: '#feature-grid', ...scrollThreshold.standard },
     });
   } else {
-    document.querySelectorAll('.feature-card').forEach((el) => {
-      gsap.set(el, { opacity: 1 });
-    });
+    document.querySelectorAll('.feature-card').forEach((el) => gsap.set(el, { opacity: 1 }));
   }
-
-  // Debug info in dev
-  console.info('[D5] Animation layer initialized. prefersReducedMotion:', prefersReducedMotion);
 </script>
