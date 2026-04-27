@@ -11,18 +11,7 @@
  *   <AgentAvatar agent="cto" size={120} />
  */
 
-export type AgentId =
-  | 'ceo'
-  | 'cto'
-  | 'cmo'
-  | 'uxdesigner'
-  | 'motiondesigner'
-  | 'icengineer'
-  | 'branddesigner'
-  | 'designsystemseng'
-  | 'docops'
-  | 'securityengineer'
-  | 'qcagent';
+export type AgentId = 'ceo' | 'cto' | 'cmo' | 'uxdesigner' | 'motiondesigner' | 'icengineer' | 'branddesigner' | 'designsystemseng' | 'docops' | 'securityengineer' | 'qcagent';
 
 interface Props {
   agent: AgentId;
@@ -33,20 +22,39 @@ interface Props {
 const { agent, size = 200, class: className } = Astro.props;
 
 // Eager raw import of all avatar SVGs at build time.
-const avatarFiles = import.meta.glob<string>(
+const avatarFiles = import.meta.glob(
   '/src/design/avatars/*.svg',
   { eager: true, query: '?raw', import: 'default' },
-);
+) as Record<string, string>;
 
 const svgPath = `/src/design/avatars/${agent}.svg`;
-const svgMarkup = avatarFiles[svgPath];
+const rawSvg = avatarFiles[svgPath];
 
-if (!svgMarkup) {
+if (!rawSvg) {
   throw new Error(
     `[AgentAvatar] No SVG found for agent="${agent}" at ${svgPath}. ` +
       `Available: ${Object.keys(avatarFiles).join(', ')}`,
   );
 }
+
+// Avatar-motion (BOAA-369) selector convention. Inject `{agent-prefix}-body`
+// onto the root <svg> so the avatar-motion runtime can target it. The avatar
+// SVGs all start with `<svg ` and don't currently set their own class attr.
+const bodyClassByAgent = {
+  ceo: 'ceo-portrait ceo-body',
+  cto: 'cto-portrait cto-body',
+  cmo: 'cmo-portrait cmo-body',
+  uxdesigner: 'ux-body',
+  motiondesigner: 'aura-body',
+  icengineer: 'ic-body',
+  branddesigner: 'brand-body',
+  designsystemseng: 'dse-body',
+  docops: 'docops-body',
+  securityengineer: 'axis-body',
+  qcagent: 'spark-body',
+} as const;
+const bodyClass = bodyClassByAgent[agent] ?? agent + '-body';
+const svgMarkup = rawSvg.replace('<svg ', '<svg class="' + bodyClass + '" ');
 ---
 
 <div

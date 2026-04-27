@@ -213,18 +213,11 @@ const pageDesc =
 </Layout>
 
 <script>
-  import { gsap, prefersReducedMotion } from '@utils/gsap';
-  import { duration, ease, stagger, scrollThreshold } from '@/lib/motion-tokens';
+  // BOAA-369 — character-select avatar motion system on the team page.
+  // All animation logic (entrance stagger, hover, select, idle/working
+  // timelines, ScrollTrigger gating, prefers-reduced-motion fallback)
+  // lives in the avatar-motion module, driven by avatar-motion-tokens.
+  import { initAvatarMotionSystem } from '@/lib/avatar-motion';
 
-  // Agent card stagger reveal
-  if (!prefersReducedMotion) {
-    gsap.fromTo('.agent-card',
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: duration.moderate, ease: ease.outExpo, stagger: stagger.base, scrollTrigger: { trigger: '#agent-grid', ...scrollThreshold.standard } },
-    );
-  } else {
-    document.querySelectorAll('.agent-card').forEach((el) => {
-      gsap.set(el, { opacity: 1 });
-    });
-  }
+  initAvatarMotionSystem('#agent-grid');
 </script>

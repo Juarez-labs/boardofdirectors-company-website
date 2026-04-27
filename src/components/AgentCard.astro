@@ -3,6 +3,11 @@
  * AgentCard — agent profile card
  *
  * Used on /team to render each agent with avatar, name, title, and bio.
+ * Participates in the avatar-motion character-select system (BOAA-369):
+ *   - `data-agent` exposes the agent key to the motion runtime
+ *   - `.card-glow` is the hover/select aura layer
+ *   - `.card-border` is the layer that takes the accent color on selection
+ *   - `data-state` reflects current state (idle / working / idle-dimmed)
  *
  * Usage:
  *   <AgentCard agent="ceo" name="CEO" title="Chief Executive Officer" bio="..." />
@@ -21,28 +26,70 @@ const { agent, name, title, bio, avatarSize = 120 } = Astro.props;
 ---
 
 <article
-  class="agent-card rounded-xl border p-8 opacity-0"
-  style="border-color: var(--color-border); background: var(--color-bg-surface);"
+  class="agent-card relative rounded-xl p-8 opacity-0 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+  style="background: var(--color-bg-surface);"
+  data-agent={agent}
+  data-state="idle"
+  role="button"
+  tabindex="0"
+  aria-label={`${name} — ${title}`}
 >
-  <div class="mb-6 flex justify-center">
-    <AgentAvatar agent={agent} size={avatarSize} />
+  <!-- Border layer: takes accent color when selected -->
+  <span
+    class="card-border pointer-events-none absolute inset-0 rounded-xl border"
+    style="border-color: var(--color-border);"
+    aria-hidden="true"
+  ></span>
+
+  <!-- Glow layer: fades in on hover/select -->
+  <span
+    class="card-glow pointer-events-none absolute inset-0 rounded-xl opacity-0"
+    style="background: radial-gradient(circle at 50% 30%, color-mix(in srgb, currentColor 18%, transparent) 0%, transparent 70%); will-change: opacity;"
+    aria-hidden="true"
+  ></span>
+
+  <div class="relative">
+    <div class="mb-6 flex justify-center">
+      <AgentAvatar agent={agent} size={avatarSize} />
+    </div>
+    <h3
+      class="text-center text-xl font-semibold tracking-tight"
+      style="color: var(--color-text-primary);"
+    >
+      {name}
+    </h3>
+    <p
+      class="mb-5 mt-1 text-center font-mono text-xs uppercase tracking-widest"
+      style="color: var(--color-text-muted);"
+    >
+      {title}
+    </p>
+
+    <!-- Name plate: ACTIVE indicator appears on selection -->
+    <p
+      class="card-active-badge mb-3 hidden text-center font-mono text-[10px] uppercase tracking-[0.25em]"
+      style="color: var(--color-text-primary);"
+      aria-hidden="true"
+    >
+      <span class="inline-block h-1.5 w-1.5 rounded-full bg-current"></span>
+      &nbsp;Active
+    </p>
+
+    <p
+      class="text-sm leading-relaxed"
+      style="color: var(--color-text-secondary);"
+    >
+      {bio}
+    </p>
   </div>
-  <h3
-    class="text-center text-xl font-semibold tracking-tight"
-    style="color: var(--color-text-primary);"
-  >
-    {name}
-  </h3>
-  <p
-    class="mb-5 mt-1 text-center font-mono text-xs uppercase tracking-widest"
-    style="color: var(--color-text-muted);"
-  >
-    {title}
-  </p>
-  <p
-    class="text-sm leading-relaxed"
-    style="color: var(--color-text-secondary);"
-  >
-    {bio}
-  </p>
 </article>
+
+<style>
+  .agent-card {
+    transition: box-shadow 0.2s ease;
+    will-change: transform;
+  }
+  .agent-card[data-state='working'] .card-active-badge {
+    display: block;
+  }
+</style>
