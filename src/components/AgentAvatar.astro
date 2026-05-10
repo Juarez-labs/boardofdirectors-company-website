@@ -29,14 +29,33 @@ const portraitSrc: Record<AgentId, string> = {
   ceo:              '/avatars/higgsfield/ceo/portrait.webp',
   cto:              '/avatars/higgsfield/cto/portrait.webp',
   cmo:              '/avatars/higgsfield/cmo/portrait.png',
-  uxdesigner:       '/avatars/higgsfield/lumen/portrait.png',
-  motiondesigner:   '/avatars/higgsfield/aura/portrait.png',
+  uxdesigner:       '/avatars/higgsfield/lumen/portrait.webp',
+  motiondesigner:   '/avatars/higgsfield/aura/portrait.webp',
   icengineer:       '/avatars/higgsfield/ice-form/portrait.png',
-  branddesigner:    '/avatars/higgsfield/gradient/portrait.png',
-  designsystemseng: '/avatars/higgsfield/dse-unit/portrait.png',
-  docops:           '/avatars/higgsfield/docops-adult/portrait.png',
-  securityengineer: '/avatars/higgsfield/axis-h/portrait.png',
-  qcagent:          '/avatars/higgsfield/spark/portrait.png',
+  branddesigner:    '/avatars/higgsfield/gradient/portrait.webp',
+  designsystemseng: '/avatars/higgsfield/dse-unit/portrait.webp',
+  docops:           '/avatars/higgsfield/docops-adult/portrait.webp',
+  securityengineer: '/avatars/higgsfield/axis-h/portrait.webp',
+  qcagent:          '/avatars/higgsfield/spark/portrait.webp',
+};
+
+/**
+ * Per-agent CSS object-position to frame the subject well inside the
+ * circular crop. Wide-format (16:9) images need adjustment so the
+ * character occupies the center of the circle rather than being cut off.
+ */
+const objectPosition: Record<AgentId, string> = {
+  ceo:              'center top',
+  cto:              'center top',
+  cmo:              'center top',
+  uxdesigner:       'center center',   // square image, panel entity centered
+  motiondesigner:   'center center',   // circular containment perfectly centered
+  icengineer:       'center top',      // portrait-format, face near top
+  branddesigner:    'center center',   // square image, prism centered
+  designsystemseng: 'center center',   // beetle robot roughly centered
+  docops:           '72% center',      // 16:9 frame — main Naut is right-of-center
+  securityengineer: 'center top',      // 16:9 frame — head/chest reactor framing
+  qcagent:          'center top',      // 16:9 frame — robot head/reactor framing
 };
 
 /** Character display names for alt text */
@@ -71,10 +90,11 @@ const bodyClass: Record<AgentId, string> = {
 
 // Prepend BASE_URL so paths work on both root domain (/) and GitHub Pages
 // subpath (/boardofdirectors-company-website/). BASE_URL always ends with '/'.
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const src  = base + portraitSrc[agent];
-const alt  = characterName[agent];
-const body = bodyClass[agent];
+const base     = import.meta.env.BASE_URL.replace(/\/$/, '');
+const src      = base + portraitSrc[agent];
+const alt      = characterName[agent];
+const body     = bodyClass[agent];
+const objPos   = objectPosition[agent];
 ---
 
 <div
@@ -88,6 +108,7 @@ const body = bodyClass[agent];
     height={size}
     loading="lazy"
     decoding="async"
+    style={`object-position: ${objPos};`}
   />
 </div>
 
