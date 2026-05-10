@@ -1,10 +1,13 @@
 ---
 /**
- * AgentAvatar — inline SVG agent avatar
+ * AgentAvatar — character portrait image
  *
- * Loads the avatar SVG from `src/design/avatars/{agent}.svg` at build time
- * (via Vite import.meta.glob, raw import) and inlines the markup. Inlining
- * keeps SVGs styleable and avoids extra HTTP requests.
+ * Renders the approved Higgsfield character portrait for each agent.
+ * Portrait images live in /public/avatars/higgsfield/<alias>/.
+ *
+ * The wrapper div carries the motion-system body class (e.g. `ceo-body`)
+ * so the GSAP float / glow timelines can target it. SVG-specific selectors
+ * (crown, HUD eyes, etc.) will silently no-op per `nullTargetWarn: false`.
  *
  * Usage:
  *   <AgentAvatar agent="ceo" />
@@ -21,60 +24,89 @@ interface Props {
 
 const { agent, size = 200, class: className } = Astro.props;
 
-// Eager raw import of all avatar SVGs at build time.
-const avatarFiles = import.meta.glob(
-  '/src/design/avatars/*.svg',
-  { eager: true, query: '?raw', import: 'default' },
-) as Record<string, string>;
+/** Public URL → portrait image for each agent */
+const portraitSrc: Record<AgentId, string> = {
+  ceo:              '/avatars/higgsfield/ceo/portrait.webp',
+  cto:              '/avatars/higgsfield/cto/portrait.webp',
+  cmo:              '/avatars/higgsfield/cmo/portrait.png',
+  uxdesigner:       '/avatars/higgsfield/lumen/portrait.png',
+  motiondesigner:   '/avatars/higgsfield/aura/portrait.png',
+  icengineer:       '/avatars/higgsfield/ice-form/portrait.png',
+  branddesigner:    '/avatars/higgsfield/gradient/portrait.png',
+  designsystemseng: '/avatars/higgsfield/dse-unit/portrait.png',
+  docops:           '/avatars/higgsfield/docops-adult/portrait.png',
+  securityengineer: '/avatars/higgsfield/axis-h/portrait.png',
+  qcagent:          '/avatars/higgsfield/spark/portrait.png',
+};
 
-const svgPath = `/src/design/avatars/${agent}.svg`;
-const rawSvg = avatarFiles[svgPath];
+/** Character display names for alt text */
+const characterName: Record<AgentId, string> = {
+  ceo:              'CEO',
+  cto:              'CTO',
+  cmo:              'CMO',
+  uxdesigner:       'Lumen — UX Designer',
+  motiondesigner:   'Aura — Motion Designer',
+  icengineer:       'IC Engineer',
+  branddesigner:    'Gradient — Brand Designer',
+  designsystemseng: 'Aethel — Design Systems Engineer',
+  docops:           'Nautilus — DocOps',
+  securityengineer: 'Axis-H — Security Engineer',
+  qcagent:          'Spark — QC Agent',
+};
 
-if (!rawSvg) {
-  throw new Error(
-    `[AgentAvatar] No SVG found for agent="${agent}" at ${svgPath}. ` +
-      `Available: ${Object.keys(avatarFiles).join(', ')}`,
-  );
-}
-
-// Avatar-motion (BOAA-369) selector convention. Inject `{agent-prefix}-body`
-// onto the root <svg> so the avatar-motion runtime can target it. The avatar
-// SVGs all start with `<svg ` and don't currently set their own class attr.
-const bodyClassByAgent = {
-  ceo: 'ceo-portrait ceo-body',
-  cto: 'cto-portrait cto-body',
-  cmo: 'cmo-portrait cmo-body',
-  uxdesigner: 'ux-body',
-  motiondesigner: 'aura-body',
-  icengineer: 'ic-body',
-  branddesigner: 'brand-body',
+/** Motion-system body class — matches GSAP selectors in avatar-motion.ts */
+const bodyClass: Record<AgentId, string> = {
+  ceo:              'ceo-portrait ceo-body',
+  cto:              'cto-portrait cto-body',
+  cmo:              'cmo-portrait cmo-body',
+  uxdesigner:       'ux-body',
+  motiondesigner:   'aura-body',
+  icengineer:       'ic-body',
+  branddesigner:    'brand-body',
   designsystemseng: 'dse-body',
-  docops: 'docops-body',
+  docops:           'docops-body',
   securityengineer: 'axis-body',
-  qcagent: 'spark-body',
-} as const;
-const bodyClass = bodyClassByAgent[agent] ?? agent + '-body';
-const svgMarkup = rawSvg.replace('<svg ', '<svg class="' + bodyClass + '" ');
+  qcagent:          'spark-body',
+};
+
+const src  = portraitSrc[agent];
+const alt  = characterName[agent];
+const body = bodyClass[agent];
 ---
 
 <div
-  class:list={['agent-avatar', `agent-avatar--${agent}`, className]}
+  class:list={['agent-avatar', `agent-avatar--${agent}`, body, className]}
   style={`--avatar-size: ${size}px;`}
-  set:html={svgMarkup}
-/>
+>
+  <img
+    src={src}
+    alt={alt}
+    width={size}
+    height={size}
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
 <style>
   .agent-avatar {
     display: inline-block;
     width: var(--avatar-size);
     height: var(--avatar-size);
-    line-height: 0;
+    border-radius: 50%;
+    overflow: hidden;
     flex-shrink: 0;
+    /* Subtle glow layer for the motion system to drive */
+    box-shadow: 0 0 0 2px transparent;
+    transition: box-shadow 0.3s ease;
   }
 
-  .agent-avatar :global(svg) {
+  .agent-avatar img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
+    border-radius: 50%;
   }
 </style>
