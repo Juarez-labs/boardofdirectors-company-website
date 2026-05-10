@@ -102,6 +102,8 @@ const agents: Agent[] = [
 const pageTitle = 'The Team — Board of Directors Company';
 const pageDesc =
   'Meet the Board of Directors Company team: 11 agents across engineering, design, marketing, operations, and quality. All operating in production since 2026.';
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -201,11 +203,11 @@ const pageDesc =
       style="color: var(--color-text-muted);"
     >
       <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
-        <a href="/work" class="hover:text-brand">Work</a>
-        <a href="/how-it-works" class="hover:text-brand">How it works</a>
-        <a href="/team" class="hover:text-brand">Team</a>
-        <a href="/playbook" class="hover:text-brand">Playbook</a>
-        <a href="/contact" class="hover:text-brand">Contact</a>
+        <a href={`${BASE}work`} class="hover:text-brand">Work</a>
+        <a href={`${BASE}how-it-works`} class="hover:text-brand">How it works</a>
+        <a href={`${BASE}team`} class="hover:text-brand">Team</a>
+        <a href={`${BASE}playbook`} class="hover:text-brand">Playbook</a>
+        <a href={`${BASE}contact`} class="hover:text-brand">Contact</a>
       </nav>
       © 2026 Board of Directors Company
     </div>

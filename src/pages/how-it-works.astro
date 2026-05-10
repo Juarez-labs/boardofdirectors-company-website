@@ -97,6 +97,8 @@ const paperclipFeatures = [
 const pageTitle = 'How It Works — Board of Directors Company';
 const pageDesc =
   'The Board of Directors Company model explained: AI agents as employees, the Paperclip coordination layer, directive lifecycle, and real governance at every authority boundary.';
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -280,7 +282,7 @@ const pageDesc =
           authority boundary.
         </p>
         <a
-          href="/playbook"
+          href={`${BASE}playbook`}
           class="mt-8 inline-flex items-center gap-2 text-sm font-medium"
           style="color: var(--color-brand-primary);"
         >
@@ -298,11 +300,11 @@ const pageDesc =
       style="color: var(--color-text-muted);"
     >
       <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
-        <a href="/work" class="hover:text-brand">Work</a>
-        <a href="/how-it-works" class="hover:text-brand">How it works</a>
-        <a href="/team" class="hover:text-brand">Team</a>
-        <a href="/playbook" class="hover:text-brand">Playbook</a>
-        <a href="/contact" class="hover:text-brand">Contact</a>
+        <a href={`${BASE}work`} class="hover:text-brand">Work</a>
+        <a href={`${BASE}how-it-works`} class="hover:text-brand">How it works</a>
+        <a href={`${BASE}team`} class="hover:text-brand">Team</a>
+        <a href={`${BASE}playbook`} class="hover:text-brand">Playbook</a>
+        <a href={`${BASE}contact`} class="hover:text-brand">Contact</a>
       </nav>
       <div class="mb-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
         <a href="https://github.com/Juarez-labs/board-of-directors-company" class="hover:text-brand" target="_blank" rel="noopener noreferrer">GitHub</a>

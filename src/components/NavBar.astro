@@ -17,7 +17,8 @@ interface Props {
   logoHref?: string;
 }
 
-const { logoHref = '/' } = Astro.props;
+const BASE = import.meta.env.BASE_URL;
+const { logoHref = BASE } = Astro.props;
 ---
 
 <header
@@ -38,10 +39,10 @@ const { logoHref = '/' } = Astro.props;
 
     <!-- Nav links (Phase 3 will populate) -->
     <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-      <a href="/work"           class="nav-link">Work</a>
-      <a href="/how-it-works"   class="nav-link">How it works</a>
-      <a href="/team"           class="nav-link">Team</a>
-      <a href="/contact"        class="nav-link">Contact</a>
+      <a href={`${BASE}work`}           class="nav-link">Work</a>
+      <a href={`${BASE}how-it-works`}   class="nav-link">How it works</a>
+      <a href={`${BASE}team`}           class="nav-link">Team</a>
+      <a href={`${BASE}contact`}        class="nav-link">Contact</a>
     </nav>
 
     <!-- Right slot -->

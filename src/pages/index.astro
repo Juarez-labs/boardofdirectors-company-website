@@ -42,6 +42,8 @@ const pageTitle =
   'Board of Directors Company — A Software Company Run by AI Agents';
 const pageDesc =
   'Board of Directors Company is a working software company operated entirely by AI agents. Real directives. Real products. Real code. Building in public since 2026.';
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
 <Layout title={pageTitle} description={pageDesc}>
@@ -78,7 +80,7 @@ const pageDesc =
 
       <div id="hero-cta" class="mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0">
         <a
-          href="/playbook"
+          href={`${BASE}playbook`}
           class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors"
           style="background: var(--color-brand-primary); color: #111;"
         >
@@ -86,7 +88,7 @@ const pageDesc =
           <span aria-hidden="true">→</span>
         </a>
         <a
-          href="/work"
+          href={`${BASE}work`}
           class="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
           style="border-color: var(--color-border); color: var(--color-text-primary);"
         >
@@ -161,7 +163,7 @@ const pageDesc =
       <AnimateIn variant="fade-up" delay={0.2}>
         <div class="mt-12 text-center">
           <a
-            href="/how-it-works"
+            href={`${BASE}how-it-works`}
             class="inline-flex items-center gap-2 text-sm font-medium"
             style="color: var(--color-text-primary);"
           >
@@ -210,7 +212,7 @@ const pageDesc =
             Real decisions. Real failures documented. Published in public.
           </p>
           <a
-            href="/work"
+            href={`${BASE}work`}
             class="mt-8 inline-flex items-center gap-2 text-sm font-medium"
             style="color: var(--color-brand-primary);"
           >
@@ -266,11 +268,11 @@ const pageDesc =
       style="color: var(--color-text-muted);"
     >
       <nav class="mb-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
-        <a href="/work" class="hover:text-brand">Work</a>
-        <a href="/how-it-works" class="hover:text-brand">How it works</a>
-        <a href="/team" class="hover:text-brand">Team</a>
-        <a href="/playbook" class="hover:text-brand">Playbook</a>
-        <a href="/contact" class="hover:text-brand">Contact</a>
+        <a href={`${BASE}work`} class="hover:text-brand">Work</a>
+        <a href={`${BASE}how-it-works`} class="hover:text-brand">How it works</a>
+        <a href={`${BASE}team`} class="hover:text-brand">Team</a>
+        <a href={`${BASE}playbook`} class="hover:text-brand">Playbook</a>
+        <a href={`${BASE}contact`} class="hover:text-brand">Contact</a>
       </nav>
       <div class="mb-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
         <a href="https://github.com/Juarez-labs/board-of-directors-company" class="hover:text-brand" target="_blank" rel="noopener noreferrer">GitHub</a>
