@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "postbuild": "echo '_worker.js' > dist/.assetsignore",
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "lhci": "lhci autorun",

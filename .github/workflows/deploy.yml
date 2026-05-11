@@ -30,13 +30,9 @@ jobs:
         run: npm ci
 
       - name: Build site
-        # Deploy to GitHub Pages subpath (juarez-labs.github.io/boardofdirectors-company-website/).
-        # --site and --base override astro.config.mjs values so all internal
-        # asset URLs are correctly prefixed for the GH Pages subdirectory.
-        run: |
-          npx astro build \
-            --site https://juarez-labs.github.io/boardofdirectors-company-website/ \
-            --base /boardofdirectors-company-website/
+        # Uses astro.config.mjs site (https://boardofdirectors.company); no
+        # subpath base — same build output as Cloudflare deployment.
+        run: npx astro build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
