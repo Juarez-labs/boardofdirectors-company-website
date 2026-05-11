@@ -34,3 +34,27 @@ Thumbs.db
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# Dev utilities / scratch scripts (not part of the public site)
+post_doc.py
+post_doc.js
+post_doc.sh
+post_review.py
+post_avatar_motion.py
+post_avatar_motion.js
+post_avatar_motion_spec.py
+upload-bible.py
+*-payload.json
+patch-*.json
+comment-payload.json
+animation-review.md
+animation-review-comment-payload.json
+avatar-comment-payload.json
+avatar-heartbeat-summary.json
+avatar-motion-spec-comment.json
+boaa368-done-payload.json
+bodc-agent-avatar-prompts-v2.md
+heartbeat-summary-payload.json
+icengineer-avatar-task.json
+motion-tokens-doc.md
+motion-tokens-payload.json
